@@ -1,0 +1,28 @@
+Project Name: 
+You are an expert full-stack developer and technical documentation analyst.
+
+Task:
+Analyze all attached project documents (both historical/archive documents and newly added files). Extract the structured data and generate a responsive, standalone single-page demo website (index.html) showcasing the project ecosystem.
+
+Input Files:
+- Historical documents, spreadsheets, and phase reports
+- Newly added scope sheets, deliverables, and updates
+
+Extraction Requirements:
+1. Projects Overview: Extract project names, domains/categories (e.g., Sales, Finance, Operations, HR), difficulty/maturity level, tech stacks, and core descriptions.
+2. Milestones & Timelines: Extract start/end dates, assignees/resources, and phase statuses (Completed, In Progress, On Hold, Not Started).
+3. Summary Metrics: Calculate total project count, active tasks, and category distribution.
+
+Website Requirements:
+- Format: Single, self-contained 'index.html' file.
+- Styling: Tailwind CSS via CDN with a modern dark theme (slate-900 palette).
+- Icons: FontAwesome 6 CDN.
+- Layout:
+  1. Top Navigation bar with project brand and a manual sync/refresh button.
+  2. Metric summary cards (KPI counters).
+  3. Interactive search input and category filter chips (All, Sales, Finance, etc.).
+  4. Project card grid showing title, category tag, tool badges, and description.
+  5. Live Milestone/Task Schedule table with status indicator badges.
+- Functionality: Pure vanilla JavaScript for client-side search, category filtering, and mock sync states. Ensure the UI handles empty states gracefully.
+
+Output only the complete, ready-to-deploy HTML code.
