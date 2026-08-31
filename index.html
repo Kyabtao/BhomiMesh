@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BhoomiMesh ($BMCM) — Project Ecosystem Dashboard</title>
+<meta name="description" content="Live demo dashboard for the BhoomiMesh RWA land-tokenization protocol on GrinRex L1: 34 spec documents, 24-month roadmap, tokenomics and audit status.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%8E%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+        animation: { 'fade-up': 'fadeUp .45s ease both', 'pulse-soft': 'pulseSoft 2.4s ease-in-out infinite' },
+        keyframes: {
+          fadeUp: { '0%': { opacity: 0, transform: 'translateY(10px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+          pulseSoft: { '0%,100%': { opacity: 1 }, '50%': { opacity: .55 } }
+        }
+      }
+    }
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  body { background-color: #020617; }
+  .bg-grid {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(16,185,129,.13), transparent),
+      linear-gradient(rgba(148,163,184,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148,163,184,.05) 1px, transparent 1px);
+    background-size: 100% 100%, 44px 44px, 44px 44px;
+  }
+  .grad-text { background: linear-gradient(120deg, #34d399 0%, #fbbf24 55%, #38bdf8 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0f172a; }
+  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  .chip.active { border-color: rgba(52,211,153,.6); background: rgba(16,185,129,.14); color: #6ee7b7; }
+  .tbl-chip.active { border-color: rgba(56,189,248,.6); background: rgba(14,165,233,.14); color: #7dd3fc; }
+  .tab-btn.active { background: rgba(16,185,129,.12); color: #6ee7b7; border-color: rgba(52,211,153,.5); }
+  #toast.show { opacity: 1; transform: translateX(0); }
+  .card-fade { transition: opacity .3s ease; }
+  .flashing .card-fade { opacity: .45; }
+</style>
+</head>
+<body class="font-sans text-slate-200 antialiased selection:bg-emerald-500/30">
+
+<!-- ============ NAV ============ -->
+<nav class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/85 backdrop-blur">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+    <a href="#overview" class="flex items-center gap-3">
+      <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 via-emerald-600 to-amber-500 shadow-lg shadow-emerald-900/50">
+        <i class="fa-solid fa-earth-asia text-white"></i>
+      </span>
+      <span class="leading-tight">
+        <span class="block text-base font-extrabold tracking-tight text-white">BhoomiMesh</span>
+        <span class="block text-[11px] font-semibold uppercase tracking-widest text-emerald-400/90">$BMCM · GrinRex L1</span>
+      </span>
+    </a>
+    <div class="hidden items-center gap-6 text-sm font-medium text-slate-300 lg:flex">
+      <a href="#overview" class="transition hover:text-emerald-300">Overview</a>
+      <a href="#economics" class="transition hover:text-emerald-300">Economics</a>
+      <a href="#documents" class="transition hover:text-emerald-300">Documents</a>
+      <a href="#roadmap" class="transition hover:text-emerald-300">Roadmap</a>
+      <a href="#pillars" class="transition hover:text-emerald-300">Pillars</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <span id="lastSync" class="hidden text-xs text-slate-500 sm:block">Not synced yet</span>
+      <button id="syncBtn" class="flex items-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-3.5 py-2 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
+        <i id="syncIcon" class="fa-solid fa-rotate text-xs"></i><span id="syncLabel">Sync Docs</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="overview" class="bg-grid border-b border-slate-800/70">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.25fr_1fr] lg:py-20">
+    <div class="animate-fade-up">
+      <span class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+        <i class="fa-solid fa-mountain-sun"></i> India's RWA Land Tokenization Protocol
+      </span>
+      <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+        BhoomiMesh <span class="grad-text">— tokenizing Indian land, on-chain.</span>
+      </h1>
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+        <strong class="text-slate-200">$BMCM</strong> converts verified Indian real estate into fractional, tradable tokens —
+        every token backed by square centimeters of physical land — on the sovereign
+        <strong class="text-slate-200">GrinRex L1</strong> blockchain (<span class="text-amber-300">$GR</span>).
+        Explore the complete <strong class="text-slate-200">34-document specification suite</strong>: whitepapers, tokenomics engines,
+        the 24-month launch roadmap, stakeholder economics and 10-times-audit results.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="#documents" class="rounded-xl bg-emerald-500 px-5 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-900/40 transition hover:bg-emerald-400">
+          <i class="fa-solid fa-layer-group mr-2"></i>Explore 34 Spec Documents
+        </a>
+        <a href="#roadmap" class="rounded-xl border border-slate-700 bg-slate-900/70 px-5 py-3 text-sm font-bold text-slate-200 transition hover:border-slate-500 hover:text-white">
+          <i class="fa-solid fa-route mr-2"></i>24-Month Roadmap
+        </a>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-2 text-xs font-semibold">
+        <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-slate-300">1 Acre = 40.4M $BMCM</span>
+        <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-slate-300">70 / 30 Landowner Split</span>
+        <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-slate-300">30-Year Lease</span>
+        <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-slate-300">8% Sinking Reserve</span>
+        <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-slate-300">100% Rent Buyback &amp; Burn</span>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 content-center gap-4 animate-fade-up" style="animation-delay:120ms">
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Total $BMCM Supply</div>
+        <div class="mt-1 text-2xl font-extrabold text-white">404.6M</div>
+        <div class="mt-1 text-xs text-slate-500">backed by 10-acre seed reserve</div>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">TGE Price</div>
+        <div class="mt-1 text-2xl font-extrabold text-emerald-300">₹0.247</div>
+        <div class="mt-1 text-xs text-slate-500">= 1 sq cm of Indian land</div>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Landowner Share</div>
+        <div class="mt-1 text-2xl font-extrabold text-amber-300">70%</div>
+        <div class="mt-1 text-xs text-slate-500">30% protocol treasury</div>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Sinking Reserve</div>
+        <div class="mt-1 text-2xl font-extrabold text-sky-300">8%</div>
+        <div class="mt-1 text-xs text-slate-500">lease-replacement fund</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ KPI CARDS ============ -->
+<section class="mx-auto max-w-7xl px-4 sm:px-6">
+  <div class="grid grid-cols-2 gap-4 py-10 md:grid-cols-3 xl:grid-cols-6" id="kpiGrid">
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Spec Documents</span>
+        <i class="fa-solid fa-file-lines text-emerald-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="34">0</span></div>
+      <div class="mt-1 text-xs text-slate-500">in HST/ archive</div>
+    </div>
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Categories</span>
+        <i class="fa-solid fa-folder-tree text-sky-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="9">0</span></div>
+      <div class="mt-1 text-xs text-slate-500">ecosystem domains</div>
+    </div>
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Protocol Utilities</span>
+        <i class="fa-solid fa-list-check text-amber-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="120">0</span><span class="text-amber-300">+</span></div>
+      <div class="mt-1 text-xs text-slate-500">across 12 sectors</div>
+    </div>
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Active Tasks</span>
+        <i class="fa-solid fa-circle-notch text-violet-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="8">0</span></div>
+      <div class="mt-1 text-xs text-slate-500">in progress right now</div>
+    </div>
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Land Reserve @ M12</span>
+        <i class="fa-solid fa-map text-emerald-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="50">0</span><span class="text-lg text-emerald-300"> acres</span></div>
+      <div class="mt-1 text-xs text-slate-500">of 50,000-acre Y10 target</div>
+    </div>
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">10-Yr Token ROI</span>
+        <i class="fa-solid fa-arrow-trend-up text-amber-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="30.8" data-decimals="1">0</span><span class="text-amber-300">x</span></div>
+      <div class="mt-1 text-xs text-slate-500">₹0.247 → ₹7.628 realized</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOKEN ECONOMICS BAND ============ -->
+<section id="economics" class="border-y border-slate-800/70 bg-slate-900/40">
+  <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1fr_1.3fr]">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Token Economics</span>
+      <h2 class="mt-2 text-2xl font-extrabold text-white sm:text-3xl">One $BMCM token, ten years of land</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-400">
+        The single-token lifecycle from the master specs: buy at <strong class="text-slate-200">₹0.247</strong> (Year 0),
+        collect annual cash dividends from 30-year lease rents, ride the circle-rate floor as land appreciates,
+        and exit at Year 10 for <strong class="text-emerald-300">₹4.448</strong> plus <strong class="text-emerald-300">₹3.180</strong> cumulative dividends.
+      </p>
+      <div class="mt-5 grid grid-cols-3 gap-3 text-center">
+        <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+          <div class="text-lg font-extrabold text-white">₹4.448</div><div class="text-[11px] text-slate-500">Y10 token price</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+          <div class="text-lg font-extrabold text-white">₹3.180</div><div class="text-[11px] text-slate-500">Y10 cumulative dividends</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+          <div class="text-lg font-extrabold text-amber-300">30.8x</div><div class="text-[11px] text-slate-500">total realized ROI</div>
+        </div>
+      </div>
+      <a href="HST/Single_Token_Price_Calculation_Chart.html" target="_blank" rel="noopener" class="mt-5 inline-block text-sm font-semibold text-emerald-300 hover:text-emerald-200">
+        Open full 10-year chart <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+      </a>
+    </div>
+    <div class="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 sm:p-6">
+      <div class="mb-2 flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">$BMCM Token Price — ₹ (₹/sq cm backing)</span>
+        <span class="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-300"><span class="h-2 w-2 animate-pulse-soft rounded-full bg-emerald-400"></span> 10-Yr Projection</span>
+      </div>
+      <svg id="priceChart" viewBox="0 0 640 300" class="h-auto w-full" role="img" aria-label="Line chart of one BhoomiMesh token price from 0.247 rupees at year zero to 4.448 rupees at year ten"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOCUMENTS ============ -->
+<section id="documents" class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+  <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Specification Suite</span>
+      <h2 class="mt-2 text-2xl font-extrabold text-white sm:text-3xl">Project Documents &amp; Engines</h2>
+      <p class="mt-2 text-sm text-slate-500">Structured data extracted from the 34 spec documents in <code class="rounded bg-slate-800 px-1.5 py-0.5 text-xs text-emerald-300">HST/</code> · <span id="docSyncNote">source: repo archive</span></p>
+    </div>
+    <div class="relative w-full md:w-80">
+      <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-500"></i>
+      <input id="searchInput" type="search" placeholder="Search documents, tools, keywords…"
+        class="w-full rounded-xl border border-slate-700 bg-slate-900/80 py-2.5 pl-10 pr-10 text-sm text-slate-200 placeholder-slate-500 outline-none transition focus:border-emerald-500/60 focus:ring-2 focus:ring-emerald-500/30"
+        aria-label="Search documents">
+      <button id="clearSearch" class="absolute right-3 top-1/2 hidden -translate-y-1/2 text-slate-500 hover:text-slate-300" aria-label="Clear search"><i class="fa-solid fa-circle-xmark"></i></button>
+    </div>
+  </div>
+
+  <div id="chipRow" class="mt-6 flex flex-wrap gap-2"></div>
+
+  <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+    <span id="resultCount"></span>
+    <span class="hidden sm:block"><i class="fa-solid fa-circle-info mr-1"></i>Click any card's <em>Open Spec</em> to read the full document</span>
+  </div>
+
+  <div id="cardsGrid" class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"></div>
+
+  <!-- Empty state -->
+  <div id="emptyState" class="hidden mt-5 flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-700 bg-slate-900/40 px-6 py-16 text-center">
+    <span class="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-800/80"><i class="fa-solid fa-magnifying-glass-minus text-2xl text-slate-500"></i></span>
+    <h3 class="mt-4 text-lg font-bold text-slate-200">No documents match your filters</h3>
+    <p class="mt-1 max-w-sm text-sm text-slate-500">Try a different keyword or category. The full 34-document archive is always available in the <code class="text-emerald-300">HST/</code> folder.</p>
+    <button id="resetFilters" class="mt-5 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-500/20">
+      <i class="fa-solid fa-filter-circle-xmark mr-1.5"></i>Clear search &amp; filters
+    </button>
+  </div>
+</section>
+
+<!-- ============ ROADMAP / TASKS ============ -->
+<section id="roadmap" class="border-y border-slate-800/70 bg-slate-900/40">
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Execution Tracker</span>
+        <h2 class="mt-2 text-2xl font-extrabold text-white sm:text-3xl">Milestones &amp; Task Schedule</h2>
+        <p class="mt-2 text-sm text-slate-500">Live status board derived from the 24-month master roadmap and the TGE pre-launch checklist.</p>
+      </div>
+      <div class="flex gap-2">
+        <button class="tab-btn active rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-300 transition" data-tab="roadmap">
+          <i class="fa-solid fa-route mr-2 text-emerald-400"></i>24-Month Roadmap
+        </button>
+        <button class="tab-btn rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-300 transition" data-tab="checklist">
+          <i class="fa-solid fa-list-check mr-2 text-amber-400"></i>TGE Pre-Launch
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div id="tblChips" class="flex flex-wrap gap-2"></div>
+        <div id="progressWrap" class="w-full sm:w-96">
+          <div class="mb-1 flex justify-between text-[11px] font-semibold text-slate-500"><span id="progressLabel"></span><span id="progressPct"></span></div>
+          <div class="flex h-2.5 w-full overflow-hidden rounded-full bg-slate-800" id="progressBar"></div>
+        </div>
+      </div>
+
+      <div class="mt-5 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[760px] text-left text-sm">
+            <thead>
+              <tr class="border-b border-slate-800 bg-slate-900/80 text-[11px] uppercase tracking-wider text-slate-500">
+                <th id="thPhase" class="px-5 py-3.5 font-bold">Phase</th>
+                <th class="px-5 py-3.5 font-bold">Milestone / Task</th>
+                <th id="thWindow" class="px-5 py-3.5 font-bold">Window</th>
+                <th class="px-5 py-3.5 font-bold">Owner</th>
+                <th class="px-5 py-3.5 font-bold">Source Doc</th>
+                <th class="px-5 py-3.5 font-bold">Status</th>
+              </tr>
+            </thead>
+            <tbody id="taskBody"></tbody>
+          </table>
+        </div>
+        <div id="tblEmpty" class="hidden flex-col items-center px-6 py-12 text-center">
+          <i class="fa-solid fa-clipboard-check text-2xl text-slate-600"></i>
+          <p class="mt-3 text-sm text-slate-500">No tasks in this status — switch filters to see the rest of the schedule.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 PILLARS ============ -->
+<section id="pillars" class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+  <div class="text-center">
+    <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Audit Result</span>
+    <h2 class="mt-2 text-2xl font-extrabold text-white sm:text-3xl">7 Core Pillars — 100% Verified</h2>
+    <p class="mx-auto mt-2 max-w-2xl text-sm text-slate-500">
+      The Web3/RWA launch standard requires 7 documentation pillars. The 14/14 verification audit matrix reports
+      <strong class="text-emerald-300">100% complete with zero missing items</strong> — every pillar is covered by the suite below.
+    </p>
+  </div>
+  <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" id="pillarGrid"></div>
+  <div class="mt-6 flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-500/5 px-5 py-4 text-sm">
+    <i class="fa-solid fa-circle-check text-lg text-emerald-400"></i>
+    <span class="font-semibold text-slate-200">Final audit result:</span>
+    <span class="text-slate-400">14/14 industry-required categories · 34 workspace files · 0 missing documents · 10x re-verification passed</span>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-slate-800/80 bg-slate-950">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
+    <div>
+      <div class="flex items-center gap-3">
+        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-amber-500"><i class="fa-solid fa-earth-asia text-sm text-white"></i></span>
+        <span class="text-base font-extrabold text-white">BhoomiMesh <span class="text-xs font-bold text-emerald-400">($BMCM)</span></span>
+      </div>
+      <p class="mt-3 text-sm leading-relaxed text-slate-500">
+        Real-world-asset land tokenization protocol. Every $BMCM token is backed by square centimeters of
+        verified Indian land, minted on the sovereign GrinRex L1 ($GR) blockchain.
+      </p>
+    </div>
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400">Quick Links</h4>
+      <ul class="mt-3 space-y-2 text-sm text-slate-500">
+        <li><a href="#overview" class="hover:text-emerald-300">Overview &amp; KPIs</a></li>
+        <li><a href="#economics" class="hover:text-emerald-300">Token Economics</a></li>
+        <li><a href="#documents" class="hover:text-emerald-300">Specification Documents</a></li>
+        <li><a href="#roadmap" class="hover:text-emerald-300">Milestones &amp; Tasks</a></li>
+        <li><a href="#pillars" class="hover:text-emerald-300">Audit Pillars</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400">Key Spec Documents</h4>
+      <ul class="mt-3 space-y-2 text-sm text-slate-500">
+        <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_BMCM_Complete_Project_Master_Index.html"><i class="fa-solid fa-compass mr-2 text-emerald-500"></i>Master Project Index</a></li>
+        <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_BMCM_Grand_Master_Whitepaper.html"><i class="fa-solid fa-book-open mr-2 text-emerald-500"></i>Grand Master Whitepaper</a></li>
+        <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_BMCM_Investor_Deck.html"><i class="fa-solid fa-hand-holding-dollar mr-2 text-emerald-500"></i>Investor Deck</a></li>
+        <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html"><i class="fa-solid fa-route mr-2 text-emerald-500"></i>24-Month Roadmap</a></li>
+        <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_100_Plus_Utilities_Master_List.html"><i class="fa-solid fa-list-check mr-2 text-emerald-500"></i>120+ Utilities Catalog</a></li>
+        <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html"><i class="fa-solid fa-code mr-2 text-emerald-500"></i>Smart Contract Dev Guide</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-slate-800/80">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-slate-600 sm:flex-row sm:px-6">
+      <span>© 2026 BhoomiMesh Protocol · GrinRex Technologies Ltd · Demo dashboard — educational use, not investment advice.</span>
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="text-slate-500 transition hover:text-emerald-300"><i class="fa-solid fa-arrow-up mr-1"></i>Back to top</button>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ TOAST ============ -->
+<div id="toast" class="pointer-events-none fixed bottom-6 right-6 z-[60] flex -translate-x-4 items-center gap-3 rounded-xl border border-emerald-500/40 bg-slate-900/95 px-4 py-3 opacity-0 shadow-2xl shadow-emerald-950/50 transition-all duration-300" role="status">
+  <span class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15"><i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i></span>
+  <span class="text-sm font-semibold text-slate-200" id="toastMsg">Synced</span>
+</div>
+
+<script>
+/* =========================================================
+   BhoomiMesh Ecosystem Dashboard — pure vanilla JS
+   Data extracted from the 34 spec documents in HST/
+   ========================================================= */
+'use strict';
+
+/* ---------- Categories ---------- */
+const CATS = {
+  all:          { label: 'All Documents',          icon: 'fa-border-all',        tag: 'bg-slate-500/15 text-slate-300 border-slate-500/40',    tile: 'from-slate-500 to-slate-700' },
+  whitepaper:   { label: 'Whitepaper & Vision',    icon: 'fa-book-open',         tag: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/40', tile: 'from-emerald-500 to-teal-700' },
+  tokenomics:   { label: 'Tokenomics & Earnings',  icon: 'fa-chart-line',        tag: 'bg-amber-500/15 text-amber-300 border-amber-500/40',     tile: 'from-amber-500 to-orange-700' },
+  land:         { label: 'Land & Property Engines',icon: 'fa-house-chimney',     tag: 'bg-teal-500/15 text-teal-300 border-teal-500/40',        tile: 'from-teal-500 to-cyan-700' },
+  strategy:     { label: 'Strategy & Roadmap',     icon: 'fa-route',             tag: 'bg-violet-500/15 text-violet-300 border-violet-500/40',   tile: 'from-violet-500 to-purple-700' },
+  finance:      { label: 'Investment & Finance',   icon: 'fa-hand-holding-dollar', tag: 'bg-rose-500/15 text-rose-300 border-rose-500/40',       tile: 'from-rose-500 to-pink-700' },
+  blockchain:   { label: 'Blockchain & Dev',       icon: 'fa-cubes',             tag: 'bg-sky-500/15 text-sky-300 border-sky-500/40',            tile: 'from-sky-500 to-blue-700' },
+  compliance:   { label: 'Compliance & Risk',      icon: 'fa-shield-halved',     tag: 'bg-orange-500/15 text-orange-300 border-orange-500/40',   tile: 'from-orange-500 to-red-700' },
+  ecosystem:    { label: 'Ecosystem & Utilities',  icon: 'fa-satellite-dish',    tag: 'bg-lime-500/15 text-lime-300 border-lime-500/40',         tile: 'from-lime-500 to-green-700' },
+  index:        { label: 'Project Index',          icon: 'fa-compass',           tag: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/40',   tile: 'from-indigo-500 to-blue-700' }
+};
+
+const MATURITY = {
+  'Audit Verified':  { cls: 'text-emerald-300', dot: 'bg-emerald-400' },
+  'Production Spec': { cls: 'text-sky-300',     dot: 'bg-sky-400' },
+  'Financial Model': { cls: 'text-amber-300',   dot: 'bg-amber-400' },
+  'Execution Plan':  { cls: 'text-violet-300',  dot: 'bg-violet-400' },
+  'Investor Grade':  { cls: 'text-rose-300',    dot: 'bg-rose-400' },
+  'Catalog':         { cls: 'text-lime-300',    dot: 'bg-lime-400' },
+  'Audit Report':    { cls: 'text-teal-300',    dot: 'bg-teal-400' }
+};
+
+const LEVEL = {
+  Core:     'border-amber-500/50 text-amber-300',
+  Advanced: 'border-violet-500/50 text-violet-300',
+  Standard: 'border-slate-600 text-slate-400'
+};
+
+/* ---------- 34 spec documents (title, file, category, description, badges, maturity, level, edition) ---------- */
+const DOCS = [
+  { t: 'Grand Master Whitepaper', f: 'BhoomiMesh_BMCM_Grand_Master_Whitepaper.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core',
+    d: 'Flagship institutional whitepaper — the 12 core equations, the 70/30 landowner lease program, the sinking-reserve protocol and multi-tier land acquisition analysis across India.',
+    b: ['RWA', '₹ INR', '12 Equations', '70/30'] },
+  { t: 'Grand Master Whitepaper', f: 'BhoomiMesh_BMCM_Grand_Master_Whitepaper 3.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core', ed: 'v3',
+    d: 'GrinRex-minted edition of the grand master spec — brand narrative, global competitive scorecard and supply-conversion metrics on the sovereign L1.',
+    b: ['RWA', 'GrinRex L1', 'Scorecard'] },
+  { t: 'Institutional Whitepaper', f: 'BhoomiMesh_BMCM_Complete_Institutional_Whitepaper.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core',
+    d: 'Complete institutional specification & multi-token whitepaper — brand story, token unit standard, 70/30 mechanics and 30-year lease-expiry safeguards.',
+    b: ['RWA', 'Multi-Token', '70/30'] },
+  { t: 'Institutional Whitepaper', f: 'BhoomiMesh_BMCM_Complete_Institutional_Whitepaper 2.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core', ed: 'v2',
+    d: 'Rupees edition with global competitive analysis, a numerical scorecard and 5-year pro-forma financial projections for the protocol.',
+    b: ['₹ INR', '5-Yr Pro-Forma'] },
+  { t: 'Institutional Whitepaper', f: 'BhoomiMesh_BMCM_Complete_Institutional_Whitepaper 3.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core', ed: 'v3',
+    d: 'Rupees edition deepening the 30-year landowner lease tokenization program, with the full rule set and mechanics of the 70/30 split.',
+    b: ['₹ INR', 'Lease Program'] },
+
+  { t: 'Single Token 10-Year Price Chart', f: 'Single_Token_Price_Calculation_Chart.html', c: 'tokenomics', m: 'Financial Model', l: 'Core',
+    d: 'Step-by-step 10-year lifecycle of one $BMCM token — ₹0.247 entry, annual cash dividends, ₹7.628 Year-10 exit (30.8x) with three exit options.',
+    b: ['Unit Economics', '₹ INR', '30.8x ROI'] },
+  { t: '10-Year Token Price & Market Simulation', f: 'BhoomiMesh_10_Year_Token_Price_And_Market_Simulation.html', c: 'tokenomics', m: 'Financial Model', l: 'Advanced',
+    d: 'Macro pro-forma: 10 acres scaling to 50,000 acres, a ₹2,250 Cr portfolio, the buyback & burn engine and over-buy / over-sell market stress tests.',
+    b: ['10-Yr Model', 'Buyback & Burn', '₹ Cr'] },
+  { t: 'All-Stakeholders Earnings Blueprint', f: 'BhoomiMesh_All_Stakeholders_Earnings_And_Incentive_Blueprint.html', c: 'tokenomics', m: 'Financial Model', l: 'Core',
+    d: 'Positive-sum value engine — detailed earning methods and the master incentive matrix for landowners, investors, SPV, validators, DePIN and AI agents.',
+    b: ['Incentive Matrix', '6 Stakeholders'] },
+  { t: 'Dividend Distribution & Portfolio Scenarios', f: 'Dividend_Distribution_And_Portfolio_Scenarios_Guide.html', c: 'tokenomics', m: 'Financial Model', l: 'Standard',
+    d: 'Four portfolio scenarios: mixed leased/vacant land, the treasury 30% dividend policy, freehold vs leasehold, and staked vs unstaked yield boosters.',
+    b: ['Dividend Policy', '4 Scenarios'] },
+  { t: 'Unallocated Token Treasury Engine', f: 'Unallocated_Token_Treasury_And_Land_Appreciation_Unlocking_Engine.html', c: 'tokenomics', m: 'Production Spec', l: 'Advanced',
+    d: 'Fixed minting with dynamic unallocated lockup — land appreciation progressively unlocks treasury tokens over time: the “development dividend”.',
+    b: ['Treasury Engine', 'Unlock Schedule'] },
+
+  { t: 'Valuation-Weighted Land Lease Engine', f: 'Valuation_Weighted_Land_Lease_Tokenization_Engine.html', c: 'land', m: 'Production Spec', l: 'Advanced',
+    d: 'Valuation-weighted token minting formulas, landowner tokenization comparison tables and the independent valuation & title verification workflow.',
+    b: ['Smart Contracts', 'Valuation'] },
+  { t: 'Agricultural Land Monetization Engine', f: 'Agricultural_Land_Monetization_And_Compliance_Engine.html', c: 'land', m: 'Production Spec', l: 'Advanced',
+    d: 'Five legal, high-yield farmland monetization streams with full compliance mapping, plus a traditional-vs-BhoomiMesh farmland yield comparison.',
+    b: ['Agri', 'Compliance', '₹ INR'] },
+  { t: 'Residential Flats & Housing Engine', f: 'Residential_Flats_And_Housing_Tokenization_Engine.html', c: 'land', m: 'Production Spec', l: 'Advanced',
+    d: '$SMART-HOMES engine: the 70/30 residential homeowner lease model, a 3% → 15% APY yield-boost engine and the prime Indian metros shortlist.',
+    b: ['Housing', '$SMART-HOMES', '15% APY'] },
+  { t: 'Residential Flat Token Calculations', f: 'Residential_Flat_Token_Calculations_And_Utilities_Guide.html', c: 'land', m: 'Financial Model', l: 'Standard',
+    d: 'Valuation-weighted flat tokenization formulas, three real-world case studies (₹1.50 Cr flat) and deep-dive specs for residential utilities #121–128.',
+    b: ['Case Studies', 'Utilities 121–128'] },
+  { t: 'Unified BMCM Residential Flat Engine', f: 'Unified_BMCM_Residential_Flat_Tokenization_Engine.html', c: 'land', m: 'Production Spec', l: 'Standard',
+    d: 'One master token for everything — the unified $BMCM residential tokenization flow plus 8 new high-yield residential utilities (#121–128).',
+    b: ['Unified Model', 'Utilities 121–128'] },
+
+  { t: 'Launch Timeline & $GR Coin Planning', f: 'BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html', c: 'strategy', m: 'Execution Plan', l: 'Core',
+    d: '$GR native coin plan (1B supply allocation & vesting), the six-phase 24-month master execution roadmap and the 10-point TGE pre-launch checklist.',
+    b: ['Roadmap', '$GR', '24 Months'] },
+  { t: 'Freehold-First 3-Year Strategy', f: 'Freehold_First_3_Year_Strategy_Plan.html', c: 'strategy', m: 'Execution Plan', l: 'Core',
+    d: 'Years 1–3 on 100% freehold company land reinvesting lease rents; the landowner lease portal opens in Y4, with a freehold-vs-day-1-lease comparison.',
+    b: ['3-Yr Plan', 'Reinvestment'] },
+  { t: '1-Acre Lean Bootstrap Plan', f: '1_Acre_Lean_Bootstrap_Plan.html', c: 'strategy', m: 'Execution Plan', l: 'Standard',
+    d: 'Zero-capex launch from a single acre: the month-by-month Year-1 execution timeline and the viral organic path to a 10-acre land reserve.',
+    b: ['Bootstrap', 'Zero Capex'] },
+
+  { t: 'Investor Deck', f: 'BhoomiMesh_BMCM_Investor_Deck.html', c: 'finance', m: 'Investor Grade', l: 'Core',
+    d: 'Seed round memorandum — the ₹12.50 Cr raise at ₹0.160, the ₹235 Lakh Cr opportunity, 5-year investor returns model and use of seed capital.',
+    b: ['Seed ₹12.5 Cr', '5-Yr Model'] },
+  { t: 'Investor Deck', f: 'BhoomiMesh_BMCM_Investor_Deck 2.html', c: 'finance', m: 'Investor Grade', l: 'Core', ed: 'v2',
+    d: 'Updated Rupees-edition investor deck with refreshed offering terms and the competitive-moat analysis vs all RWA alternatives.',
+    b: ['Seed ₹12.5 Cr', 'Moat'] },
+  { t: 'Complete Investor Deck & Master Document', f: 'BhoomiMesh_Complete_Investor_Deck_And_Full_Project_Master_Document.html', c: 'finance', m: 'Investor Grade', l: 'Core',
+    d: 'Combined grand-master deck and full project document — offering terms, 10-year pro-forma portfolio simulation and the single-token lifecycle.',
+    b: ['10-Yr Pro-Forma', 'Master Doc'] },
+  { t: 'Company Revenue & Profitability Model', f: 'Company_Revenue_And_Profitability_Model.html', c: 'finance', m: 'Financial Model', l: 'Core',
+    d: 'Five corporate revenue streams — SPV administration fee (10–15%), blockchain fees, royalties and treasury appreciation — in a 5-year P&L (₹ Cr).',
+    b: ['5-Yr P&L', '5 Revenue Streams'] },
+  { t: 'Market Feasibility & Profitability', f: 'BhoomiMesh_Market_Feasibility_And_Profitability_Analysis.html', c: 'finance', m: 'Financial Model', l: 'Advanced',
+    d: 'Real-world Indian demand validation across 3 stakeholder groups, monthly SPV OpEx, EBITDA break-even at 12 acres, CAC vs LTV and bear stress tests.',
+    b: ['OpEx', 'CAC / LTV', 'Bear Tests'] },
+  { t: 'Market Feasibility & Profitability', f: 'BhoomiMesh_Market_Feasibility_And_Profitability_Analysis 2.html', c: 'finance', m: 'Financial Model', l: 'Advanced', ed: 'v2',
+    d: 'Updated feasibility analysis with revised unit economics and refreshed bear-market sensitivity scenarios for the SPV operation.',
+    b: ['OpEx', 'Sensitivity'] },
+
+  { t: 'GrinChain L1 Blockchain Architecture', f: 'GrinChain_L1_Blockchain_Architecture.html', c: 'blockchain', m: 'Production Spec', l: 'Core',
+    d: 'Sovereign RWA Layer-1 architecture — the dual-asset $GR economy (gas vs land token), EVM compatibility, consensus-KYC node specs and teleport bridges.',
+    b: ['L1', 'EVM', '$GR'] },
+  { t: 'Smart Contract Code & Dev Guide', f: 'BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html', c: 'blockchain', m: 'Production Spec', l: 'Advanced',
+    d: 'Production Solidity — BhoomiMeshToken.sol, LandownerLeasePortal.sol and SinkingReplacementReserve.sol with a complete developer integration guide.',
+    b: ['Solidity', '3 Contracts', 'Dev Guide'] },
+  { t: 'GrinRex ($GR) Master Whitepaper', f: 'GrinRex_GR_Master_Whitepaper.html', c: 'blockchain', m: 'Audit Verified', l: 'Core',
+    d: 'Institutional whitepaper for the native gas coin — brand narrative, token unit standard, competitive scorecard, pro-forma and the “cons-free” risk matrix.',
+    b: ['₹ INR', 'Risk Matrix'] },
+
+  { t: '12 “What If?” Scenario Stress Tests', f: 'BhoomiMesh_What_If_Scenario_Stress_Tests.html', c: 'compliance', m: 'Audit Verified', l: 'Advanced',
+    d: 'Twelve black-swan scenarios — VDA tax shocks, re-zoning, title disputes, tenant defaults, hard forks, lost keys, whale takeovers — each with mitigations.',
+    b: ['12 Scenarios', 'Risk Matrix'] },
+  { t: '12 “What If?” Scenario Stress Tests', f: 'BhoomiMesh_What_If_Scenario_Stress_Tests 2.html', c: 'compliance', m: 'Audit Verified', l: 'Advanced', ed: 'v2',
+    d: 'Updated stress-test suite with revised probability/impact scoring and refreshed mitigation playbooks for every black-swan scenario.',
+    b: ['12 Scenarios', 'Updated'] },
+  { t: 'Single-Tier Referral & Compliance Guide', f: 'BhoomiMesh_Single_Tier_Referral_And_Compliance_Guide.html', c: 'compliance', m: 'Audit Verified', l: 'Standard',
+    d: 'The single-tier (1-level) referral architecture benchmarked against multi-level marketing, plus three fully compliant community growth programs.',
+    b: ['1-Tier', 'Anti-MLM'] },
+  { t: 'Web3 Launch Checklist & Audit', f: 'Web3_Project_Launch_Checklist_And_Audit.html', c: 'compliance', m: 'Audit Report', l: 'Core',
+    d: 'The 7-pillar documentation standard for Web3/RWA launches with the 14/14 verification audit matrix — 100% complete, zero missing items.',
+    b: ['7 Pillars', '14/14 Audit'] },
+
+  { t: '120+ Protocol Utilities Master List', f: 'BhoomiMesh_100_Plus_Utilities_Master_List.html', c: 'ecosystem', m: 'Catalog', l: 'Core',
+    d: '120 concrete utilities across 12 sectors — physical land, AI agents, DePIN, drone airspace, solar & carbon, agriculture, DeFi, AR, governance, civic, logistics and sub-tokens.',
+    b: ['120 Utilities', '12 Sectors'] },
+  { t: 'GrinRex L1 Multi-Industry Ecosystem', f: 'GrinRex_L1_Multi_Industry_Ecosystem_Architecture.html', c: 'ecosystem', m: 'Production Spec', l: 'Advanced',
+    d: 'Sub-token ecosystem architecture — $GAME-REX, $SOCIAL-REX, $BIZ-REX, $AGRI, $AIR, $ECO, $SMART, $META and how each compounds value into $GR and $BMCM.',
+    b: ['8 Sub-Tokens', 'L1'] },
+
+  { t: 'Master Project Index', f: 'BhoomiMesh_BMCM_Complete_Project_Master_Index.html', c: 'index', m: 'Audit Report', l: 'Core',
+    d: 'Master index of the 11 core specification documents plus the 10-times audit checklist: brand consistency, INR precision, 70/30 and sub-token verification.',
+    b: ['Master Index', 'Audit ×10'] }
+];
+
+/* ---------- Roadmap (24-month master) ---------- */
+const ROADMAP = [
+  { p: 'P0', w: 'M0–M2',  name: '11-document master spec suite authored',        owner: 'Documentation Team', st: 'completed',   doc: 'BhoomiMesh_BMCM_Complete_Project_Master_Index.html' },
+  { p: 'P0', w: 'M2–M3',  name: '10-times deep audit — 100% verification pass',   owner: 'QA & Audit',         st: 'completed',   doc: 'BhoomiMesh_BMCM_Complete_Project_Master_Index.html' },
+  { p: 'P1', w: 'M1–M2',  name: 'Incorporate GrinRex Technologies Ltd + BhoomiReserve SPV', owner: 'Legal Counsel', st: 'in-progress', doc: 'BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html' },
+  { p: 'P1', w: 'M2–M3',  name: 'GrinChain L1 Devnet / Testnet deployment',       owner: 'Core Engineering',   st: 'in-progress', doc: 'GrinChain_L1_Blockchain_Architecture.html' },
+  { p: 'P1', w: 'M1–M3',  name: '10-Acre seed parcel (Jewar) NEC & SRO deeds → IPFS', owner: 'Land Operations',  st: 'in-progress', doc: 'BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html' },
+  { p: 'P2', w: 'M3–M5',  name: 'CertiK & OpenZeppelin smart-contract audits',    owner: 'Security',           st: 'in-progress', doc: 'BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html' },
+  { p: 'P2', w: 'M4–M5',  name: 'Seed round close — ₹12.50 Cr @ ₹0.160',         owner: 'Fundraising',        st: 'not-started', doc: 'BhoomiMesh_BMCM_Investor_Deck.html' },
+  { p: 'P2', w: 'M6',     name: 'GrinRex L1 mainnet & $GR genesis event',         owner: 'Core Engineering',   st: 'not-started', doc: 'GrinChain_L1_Blockchain_Architecture.html' },
+  { p: 'P3', w: 'M7',     name: '$BMCM TGE — 404.6M tokens @ ₹0.247',             owner: 'Protocol Treasury',  st: 'not-started', doc: 'BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html' },
+  { p: 'P3', w: 'M7–M8',  name: 'DEX launch + 24-month liquidity lock (Uniswap / WazirX / CoinDCX)', owner: 'Treasury & MM', st: 'not-started', doc: 'BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html' },
+  { p: 'P4', w: 'M10–M12',name: 'Landowner lease portal live (70/30 split)',      owner: 'Product',            st: 'not-started', doc: 'BhoomiMesh_BMCM_Complete_Institutional_Whitepaper.html' },
+  { p: 'P5', w: 'M13–M15',name: 'Tier-1 CEX listings — KuCoin, Gate.io, Bitget',  owner: 'Partnerships',       st: 'not-started', doc: 'BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html' },
+  { p: 'P5', w: 'M16–M18',name: 'Sinking Land Replacement Reserve activation (8%)', owner: 'Treasury',         st: 'not-started', doc: 'BhoomiMesh_BMCM_Grand_Master_Whitepaper.html' },
+  { p: 'P6', w: 'M19–M24',name: '$GAME-REX & $SOCIAL-REX sub-token launches',     owner: 'Ecosystem',          st: 'not-started', doc: 'GrinRex_L1_Multi_Industry_Ecosystem_Architecture.html' },
+  { p: 'P6', w: 'M24+',   name: 'Multi-state sub-portals — $BHOOMI-MH / -UP / -KA', owner: 'Ecosystem',        st: 'on-hold',     doc: 'BhoomiMesh_100_Plus_Utilities_Master_List.html' }
+];
+
+/* ---------- TGE pre-launch checklist ---------- */
+const CHECKLIST = [
+  { n: 1,  name: 'Legal opinion letter — utility classification confirmed',        owner: 'Legal Counsel',  w: 'M6', st: 'completed' },
+  { n: 2,  name: 'Security audit reports published (CertiK & OpenZeppelin)',        owner: 'Security',       w: 'M5', st: 'in-progress' },
+  { n: 3,  name: '3-of-5 Gnosis Safe multi-sig for protocol treasury & SPV funds',  owner: 'Treasury Ops',   w: 'M6', st: 'in-progress' },
+  { n: 4,  name: '100% DEX liquidity locked 24 months via timelock',                owner: 'Treasury Ops',   w: 'M7', st: 'not-started' },
+  { n: 5,  name: 'CoinGecko & CoinMarketCap pre-listing + API telemetry',           owner: 'Partnerships',   w: 'M6', st: 'in-progress' },
+  { n: 6,  name: 'Section 115BBH 1% VDA TDS automated deduction engine',            owner: 'Protocol Dev',   w: 'M7', st: 'not-started' },
+  { n: 7,  name: 'IBBI valuer report for the 10-Acre Jewar seed parcel',            owner: 'Land Operations',w: 'M5', st: 'in-progress' },
+  { n: 8,  name: 'SRO 30-year non-encumbrance records uploaded to IPFS',            owner: 'Land Operations',w: 'M4', st: 'completed' },
+  { n: 9,  name: 'Community airdrop & bounty campaign (testnet + stakers)',         owner: 'Community',      w: 'M7', st: 'not-started' },
+  { n: 10, name: 'Market-maker agreements — WazirX, CoinDCX, Uniswap v3',           owner: 'Partnerships',   w: 'M7', st: 'not-started' }
+];
+
+/* ---------- 7 audit pillars ---------- */
+const PILLARS = [
+  { icon: 'fa-drafting-compass', name: 'Vision & Technical Architecture', d: 'Grand master whitepaper, GrinChain L1 specs, production smart contracts' },
+  { icon: 'fa-calculator',       name: 'Tokenomics & Mathematical Models', d: '10-year simulation, single-token chart, dividend scenarios, treasury engine' },
+  { icon: 'fa-handshake',        name: 'Fundraising & Investor Relations', d: 'Seed deck & memo (₹12.50 Cr), complete master investment document' },
+  { icon: 'fa-store',            name: 'Market Feasibility & Unit Economics', d: 'Demand validation, SPV OpEx, break-even, CAC vs LTV, corporate P&L' },
+  { icon: 'fa-rocket',           name: 'Execution & Growth Strategy',     d: '1-acre lean bootstrap, freehold-first 3-year plan, 24-month roadmap' },
+  { icon: 'fa-diagram-project',  name: 'Ecosystem Utilities & Multi-Tokens', d: '120+ utility catalog, 8-industry sub-token architecture' },
+  { icon: 'fa-scale-balanced',   name: 'Legal, Compliance & Risk',        d: '12 black-swan stress tests, single-tier referral, launch audit matrix' }
+];
+
+const STATUS = {
+  'completed':   { label: 'Completed',   badge: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300',  icon: 'fa-circle-check',    seg: 'bg-emerald-500' },
+  'in-progress': { label: 'In Progress', badge: 'border-sky-500/40 bg-sky-500/10 text-sky-300',             icon: 'fa-circle-half-stroke', seg: 'bg-sky-500' },
+  'on-hold':     { label: 'On Hold',     badge: 'border-amber-500/40 bg-amber-500/10 text-amber-300',       icon: 'fa-pause',           seg: 'bg-amber-500' },
+  'not-started': { label: 'Not Started', badge: 'border-slate-600 bg-slate-700/20 text-slate-400',          icon: 'fa-clock',           seg: 'bg-slate-600' }
+};
+
+/* ---------- State & helpers ---------- */
+const state = { q: '', cat: 'all', status: 'all', tab: 'roadmap', lastSync: null };
+const $  = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const href = f => 'HST/' + f.split('/').map(encodeURIComponent).join('/');
+
+/* ---------- Render: category chips ---------- */
+function renderChips() {
+  const row = $('#chipRow');
+  row.innerHTML = Object.entries(CATS).map(([key, c]) => {
+    const count = key === 'all' ? DOCS.length : DOCS.filter(d => d.c === key).length;
+    return `<button data-cat="${key}" class="chip flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition
+      ${key === 'all' ? 'border-slate-600 bg-slate-800/80 text-slate-200' : 'border-slate-700 bg-slate-900/70 text-slate-400 hover:border-slate-500'}"
+      style="${key === state.cat ? 'border-color:rgba(52,211,153,.6);background:rgba(16,185,129,.14);color:#6ee7b7' : ''}">
+      <i class="fa-solid ${c.icon}"></i>${c.label}
+      <span class="rounded-full bg-slate-800 px-1.5 py-0.5 text-[10px] text-slate-400">${count}</span>
+    </button>`;
+  }).join('');
+  $$('#chipRow .chip').forEach(b => b.addEventListener('click', () => { state.cat = b.dataset.cat; renderChips(); renderCards(); }));
+}
+
+/* ---------- Render: document cards ---------- */
+function filteredDocs() {
+  const q = state.q.trim().toLowerCase();
+  return DOCS.filter(d => {
+    if (state.cat !== 'all' && d.c !== state.cat) return false;
+    if (!q) return true;
+    const hay = (d.t + ' ' + d.d + ' ' + CATS[d.c].label + ' ' + d.b.join(' ')).toLowerCase();
+    return q.split(/\s+/).every(tok => hay.includes(tok));
+  });
+}
+
+function renderCards() {
+  const list = filteredDocs();
+  const grid = $('#cardsGrid');
+  $('#resultCount').innerHTML = `Showing <strong class="text-slate-300">${list.length}</strong> of ${DOCS.length} documents` +
+    (state.cat !== 'all' ? ` in <strong class="text-emerald-300">${esc(CATS[state.cat].label)}</strong>` : '') +
+    (state.q.trim() ? ` matching “<strong class="text-slate-300">${esc(state.q.trim())}</strong>”` : '');
+  $('#emptyState').classList.toggle('hidden', list.length > 0);
+
+  grid.innerHTML = list.map((d, i) => {
+    const c = CATS[d.c], mat = MATURITY[d.m];
+    return `<article class="card-fade group flex flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-5 transition hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-950/40" style="animation:fadeUp .4s ease both;animation-delay:${Math.min(i * 40, 400)}ms">
+      <div class="flex items-start justify-between gap-3">
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${c.tile} text-white shadow"><i class="fa-solid ${c.icon}"></i></span>
+        <div class="flex flex-wrap justify-end gap-1.5">
+          <span class="rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${c.tag}">${esc(c.label)}</span>
+          ${d.ed ? `<span class="rounded-full border border-slate-600 bg-slate-800 px-2 py-1 text-[10px] font-bold text-slate-400">${esc(d.ed)}</span>` : ''}
+        </div>
+      </div>
+      <h3 class="mt-4 text-base font-bold leading-snug text-white group-hover:text-emerald-200">${esc(d.t)}</h3>
+      <p class="mt-2 flex-1 text-[13px] leading-relaxed text-slate-400">${esc(d.d)}</p>
+      <div class="mt-3 flex flex-wrap gap-1.5">
+        ${d.b.map(b => `<span class="rounded-md bg-slate-800/90 px-2 py-1 text-[10px] font-semibold text-slate-300"><i class="fa-solid fa-tag mr-1 text-[9px] text-slate-500"></i>${esc(b)}</span>`).join('')}
+      </div>
+      <div class="mt-4 flex items-center justify-between border-t border-slate-800 pt-3.5 text-xs">
+        <span class="flex items-center gap-2">
+          <span class="flex items-center gap-1.5 ${mat.cls}"><span class="h-1.5 w-1.5 rounded-full ${mat.dot}"></i></span>${esc(d.m)}</span>
+          <span class="rounded-md border px-1.5 py-0.5 text-[10px] font-bold ${LEVEL[d.l]}">${esc(d.l)}</span>
+        </span>
+        <a href="${href(d.f)}" target="_blank" rel="noopener" class="font-bold text-emerald-300 transition hover:text-emerald-200">Open Spec <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+/* ---------- Render: task table ---------- */
+function currentTasks() {
+  return state.tab === 'roadmap' ? ROADMAP : CHECKLIST;
+}
+function visibleTasks() {
+  return currentTasks().filter(t => state.status === 'all' || t.st === state.status);
+}
+
+function renderTable() {
+  const isRoad = state.tab === 'roadmap';
+  $('#thPhase').textContent  = isRoad ? 'Phase' : '#';
+  $('#thWindow').textContent = isRoad ? 'Window' : 'Target';
+  const rows = visibleTasks();
+
+  $('#taskBody').innerHTML = rows.map(t => {
+    const s = STATUS[t.st];
+    return `<tr class="border-b border-slate-800/70 transition hover:bg-slate-900/60">
+      <td class="px-5 py-3.5">
+        ${isRoad
+          ? `<span class="rounded-lg bg-slate-800 px-2 py-1 font-mono text-xs font-bold text-sky-300">${esc(t.p)}</span>`
+          : `<span class="font-mono text-xs font-bold text-slate-500">${String(t.n).padStart(2, '0')}</span>`}
+      </td>
+      <td class="px-5 py-3.5 font-medium text-slate-200">${esc(t.name)}</td>
+      <td class="px-5 py-3.5 font-mono text-xs text-slate-400">${esc(t.w)}</td>
+      <td class="px-5 py-3.5 text-slate-400">${esc(t.owner)}</td>
+      <td class="px-5 py-3.5">${isRoad
+        ? `<a href="${href(t.doc)}" target="_blank" rel="noopener" class="text-xs font-semibold text-emerald-300/90 hover:text-emerald-200" title="${esc(t.doc)}"><i class="fa-solid fa-file-lines mr-1.5"></i>Spec</a>`
+        : `<span class="text-xs text-slate-600">Checklist</span>`}</td>
+      <td class="px-5 py-3.5"><span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold ${s.badge}"><i class="fa-solid ${s.icon}"></i>${s.label}</span></td>
+    </tr>`;
+  }).join('');
+
+  const tableWrap = $('#taskBody').closest('.overflow-x-auto');
+  tableWrap.classList.toggle('hidden', rows.length === 0);
+  const empty = $('#tblEmpty');
+  empty.classList.toggle('hidden', rows.length > 0);
+  empty.classList.toggle('flex', rows.length === 0);
+  renderTblChips();
+  renderProgress();
+}
+
+function renderTblChips() {
+  const tasks = currentTasks();
+  const order = ['all', 'completed', 'in-progress', 'on-hold', 'not-started'];
+  $('#tblChips').innerHTML = order.map(k => {
+    const label = k === 'all' ? 'All' : STATUS[k].label;
+    const count = k === 'all' ? tasks.length : tasks.filter(t => t.st === k).length;
+    return `<button data-st="${k}" class="tbl-chip flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition
+      ${k === 'all' ? 'border-slate-600 bg-slate-800/80 text-slate-300' : 'border-slate-700 bg-slate-900/70 text-slate-500 hover:border-slate-500'}"
+      style="${k === state.status ? 'border-color:rgba(56,189,248,.6);background:rgba(14,165,233,.14);color:#7dd3fc' : ''}">
+      ${k === 'all' ? '<i class="fa-solid fa-table-list"></i>' : `<i class="fa-solid ${STATUS[k].icon}"></i>`}${label}
+      <span class="rounded-full bg-slate-800 px-1.5 text-[10px]">${count}</span>
+    </button>`;
+  }).join('');
+  $$('#tblChips .tbl-chip').forEach(b => b.addEventListener('click', () => { state.status = b.dataset.st; renderTable(); }));
+}
+
+function renderProgress() {
+  const tasks = currentTasks();
+  const done = tasks.filter(t => t.st === 'completed').length;
+  const pct = Math.round(done / tasks.length * 100);
+  $('#progressLabel').textContent = `${done} of ${tasks.length} ${state.tab === 'roadmap' ? 'roadmap phases' : 'TGE checklist items'} completed`;
+  $('#progressPct').textContent = pct + '%';
+  $('#progressBar').innerHTML = Object.entries(STATUS).map(([k, s]) => {
+    const n = tasks.filter(t => t.st === k).length;
+    return n ? `<span class="${s.seg}" style="width:${(n / tasks.length) * 100}%"></span>` : '';
+  }).join('');
+}
+
+/* ---------- Render: pillars ---------- */
+function renderPillars() {
+  $('#pillarGrid').innerHTML = PILLARS.map((p, i) => `
+    <div class="card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5" style="animation:fadeUp .4s ease both;animation-delay:${i * 60}ms">
+      <div class="flex items-center justify-between">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-300"><i class="fa-solid ${p.icon}"></i></span>
+        <span class="flex items-center gap-1 text-[11px] font-bold text-emerald-400"><i class="fa-solid fa-circle-check"></i>Verified</span>
+      </div>
+      <h3 class="mt-3 text-sm font-bold text-white">Pillar ${i + 1}: ${esc(p.name)}</h3>
+      <p class="mt-1.5 text-xs leading-relaxed text-slate-500">${esc(p.d)}</p>
+    </div>`).join('');
+}
+
+/* ---------- KPI count-up ---------- */
+function animateKPIs() {
+  const nums = $$('.kpi-num');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      const el = e.target;
+      const target = parseFloat(el.dataset.target);
+      const dec = parseInt(el.dataset.decimals || '0', 10);
+      const dur = 1300, t0 = performance.now();
+      (function tick(now) {
+        const k = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - k, 3);
+        el.textContent = (target * eased).toFixed(dec);
+        if (k < 1) requestAnimationFrame(tick); else el.textContent = target.toFixed(dec);
+      })(t0);
+    });
+  }, { threshold: 0.4 });
+  nums.forEach(n => io.observe(n));
+}
+
+/* ---------- Price chart (pure SVG) ---------- */
+function buildChart() {
+  const PRICE = [0.247, 0.315, 0.412, 0.618, 0.865, 1.548, 1.982, 2.393, 2.980, 3.663, 4.448];
+  const W = 640, H = 300, PL = 52, PR = 20, PT = 18, PB = 34;
+  const maxY = 4.8;
+  const x = i => PL + i * (W - PL - PR) / (PRICE.length - 1);
+  const y = v => H - PB - (v / maxY) * (H - PT - PB);
+  let g = '';
+  [1, 2, 3, 4].forEach(v => {
+    g += `<line x1="${PL}" y1="${y(v)}" x2="${W - PR}" y2="${y(v)}" stroke="#1e293b" stroke-width="1"/>
+          <text x="${PL - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#64748b">₹${v}</text>`;
+  });
+  const pts = PRICE.map((v, i) => `${x(i)},${y(v)}`).join(' ');
+  const area = `M ${x(0)},${y(PRICE[0])} ` + PRICE.map((v, i) => `L ${x(i)},${y(v)}`).join(' ') + ` L ${x(PRICE.length - 1)},${H - PB} L ${x(0)},${H - PB} Z`;
+  const keyPts = [0, 3, 5, 10];
+  $('#priceChart').innerHTML = `
+    <defs>
+      <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#10b981" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#10b981" stop-opacity="0.02"/>
+      </linearGradient>
+    </defs>
+    ${g}
+    <path d="${area}" fill="url(#areaFill)"/>
+    <polyline points="${pts}" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    ${PRICE.map((v, i) => `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="#020617" stroke="#34d399" stroke-width="2"><title>Year ${i}: ₹${v.toFixed(3)}</title></circle>`).join('')}
+    ${keyPts.map(i => `<text x="${x(i)}" y="${y(PRICE[i]) - 10}" text-anchor="middle" font-size="11" font-weight="700" fill="#fbbf24">₹${PRICE[i].toFixed(3)}</text>
+                       <text x="${x(i)}" y="${H - 12}" text-anchor="middle" font-size="11" fill="#64748b">Y${i}</text>`).join('')}
+    <line x1="${PL}" y1="${H - PB}" x2="${W - PR}" y2="${H - PB}" stroke="#334155" stroke-width="1"/>`;
+}
+
+/* ---------- Toast ---------- */
+let toastTimer = null;
+function toast(msg, icon = 'fa-circle-check') {
+  const t = $('#toast');
+  $('#toastMsg').textContent = msg;
+  $('#toastIcon').className = `fa-solid ${icon} text-emerald-400`;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3800);
+}
+
+/* ---------- Mock sync ---------- */
+function doSync() {
+  const btn = $('#syncBtn'), icon = $('#syncIcon'), label = $('#syncLabel');
+  btn.disabled = true;
+  icon.className = 'fa-solid fa-spinner fa-spin text-xs';
+  label.textContent = 'Syncing…';
+  $('#kpiGrid').classList.add('flashing');
+  setTimeout(() => {
+    const docs = DOCS.length;
+    const tasks = ROADMAP.length + CHECKLIST.length;
+    const active = [...ROADMAP, ...CHECKLIST].filter(t => t.st === 'in-progress').length;
+    const now = new Date();
+    state.lastSync = now;
+    const stamp = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    $('#lastSync').textContent = 'Synced ' + stamp;
+    $('#docSyncNote').textContent = 're-verified ' + stamp + ' from HST/ archive';
+    icon.className = 'fa-solid fa-circle-check text-xs';
+    label.textContent = 'Synced';
+    btn.disabled = false;
+    $('#kpiGrid').classList.remove('flashing');
+    toast(`${docs} documents re-verified · ${tasks} tasks reconciled · ${active} active`, 'fa-cloud-arrow-down');
+    renderCards();
+    renderTable();
+  }, 1100);
+}
+
+/* ---------- Init ---------- */
+function init() {
+  renderChips();
+  renderCards();
+  renderTable();
+  renderPillars();
+  buildChart();
+  animateKPIs();
+
+  const search = $('#searchInput'), clearBtn = $('#clearSearch');
+  search.addEventListener('input', () => {
+    state.q = search.value;
+    clearBtn.classList.toggle('hidden', !search.value);
+    renderCards();
+  });
+  search.addEventListener('keydown', e => { if (e.key === 'Escape') { search.value = ''; state.q = ''; clearBtn.classList.add('hidden'); renderCards(); } });
+  clearBtn.addEventListener('click', () => { search.value = ''; state.q = ''; clearBtn.classList.add('hidden'); renderCards(); search.focus(); });
+  $('#resetFilters').addEventListener('click', () => {
+    state.q = ''; state.cat = 'all';
+    search.value = ''; clearBtn.classList.add('hidden');
+    renderChips(); renderCards();
+  });
+
+  $$('.tab-btn').forEach(b => b.addEventListener('click', () => {
+    state.tab = b.dataset.tab;
+    state.status = 'all';
+    $$('.tab-btn').forEach(x => x.classList.toggle('active', x === b));
+    renderTable();
+  }));
+
+  $('#syncBtn').addEventListener('click', doSync);
+}
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
