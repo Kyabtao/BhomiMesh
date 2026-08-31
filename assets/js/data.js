@@ -208,5 +208,224 @@
   /* ---------- Single token 10-year price (₹) — from Single_Token_Price_Calculation_Chart.html ---------- */
   const PRICE = [0.247, 0.315, 0.412, 0.618, 0.865, 1.548, 1.982, 2.393, 2.980, 3.663, 4.448];
 
-  window.BMCM = { CATS, MATURITY, LEVEL, DOCS, ROADMAP, CHECKLIST, PILLARS, STATUS, PRICE };
+  /* ---------- Protocol constants ---------- */
+  const TOKENS_PER_ACRE = 40468564;   /* 1 Acre = 40,468,564 sq cm = 40.46M $BMCM */
+  const SQFT_PER_ACRE = 43560;
+  const TGE_PRICE = 0.247;            /* ₹ per token at TGE */
+  const SEED_PRICE = 0.160;           /* ₹ per token in seed round (35% discount) */
+  const SINKING_PCT = 8;              /* % of lease rent to Sinking Replacement Reserve */
+  const LANDOWNER_PCT = 70;
+
+  /* ---------- 10-year single-token table (all columns, ₹) ---------- */
+  const TOKEN_10YR = [
+    { y: 0,  price: 0.247, floor: 0.160, backing: 1.00, div: 0.000, cum: 0.000, total: 0.247, roi: '1.0x (base)' },
+    { y: 1,  price: 0.315, floor: 0.210, backing: 1.10, div: 0.031, cum: 0.031, total: 0.346, roi: '1.4x' },
+    { y: 2,  price: 0.412, floor: 0.285, backing: 1.21, div: 0.057, cum: 0.088, total: 0.469, roi: '1.9x' },
+    { y: 3,  price: 0.618, floor: 0.410, backing: 1.38, div: 0.088, cum: 0.176, total: 0.794, roi: '3.2x' },
+    { y: 4,  price: 0.865, floor: 0.590, backing: 1.75, div: 0.130, cum: 0.306, total: 0.995, roi: '4.0x' },
+    { y: 5,  price: 1.548, floor: 1.050, backing: 2.50, div: 0.240, cum: 0.546, total: 2.094, roi: '8.5x' },
+    { y: 6,  price: 1.982, floor: 1.380, backing: 2.76, div: 0.317, cum: 0.863, total: 2.299, roi: '9.3x' },
+    { y: 7,  price: 2.393, floor: 1.720, backing: 3.02, div: 0.388, cum: 1.251, total: 2.781, roi: '11.3x' },
+    { y: 8,  price: 2.980, floor: 2.180, backing: 3.35, div: 0.492, cum: 1.743, total: 3.472, roi: '14.1x' },
+    { y: 9,  price: 3.663, floor: 2.750, backing: 3.69, div: 0.615, cum: 2.358, total: 4.278, roi: '17.3x' },
+    { y: 10, price: 4.448, floor: 3.380, backing: 4.00, div: 0.756, cum: 3.180, total: 7.628, roi: '30.8x' }
+  ];
+
+  /* ---------- $GR native coin allocation (1B supply) — Launch Timeline doc ---------- */
+  const GR_ALLOCATION = [
+    { name: 'Validator Staking Rewards',      pct: 35, coins: '350M', vest: 'Emitted linearly over 10 years to L1 node validators' },
+    { name: 'Public Genesis & DEX Liquidity', pct: 25, coins: '250M', vest: '40% unlocked at Genesis TGE, 60% vested over 12 months' },
+    { name: 'Ecosystem & Developer Grants',   pct: 20, coins: '200M', vest: 'Vested monthly over 36 months for dApp developers' },
+    { name: 'Core Protocol Engineering Team', pct: 12, coins: '120M', vest: '12-month cliff, then 36-month linear monthly vesting' },
+    { name: 'Strategic Advisory & Backers',   pct: 8,  coins: '80M',  vest: '6-month cliff, then 24-month linear monthly vesting' }
+  ];
+
+  /* ---------- 12 "What If?" stress tests (categories A–F) ---------- */
+  const STRESS_TESTS = [
+    { cat: 'Government & Regulatory', q: 'India bans VDAs or raises VDA tax to 50%?',
+      a: '$BMCM is built on the ERC-3643 permissioned RWA standard and can migrate into a SEBI / GIFT City IFSC regulated tokenized-REIT wrapper. Physical titles under BhoomiReserve SPV remain 100% legal under the Transfer of Property Act 1882.' },
+    { cat: 'Government & Regulatory', q: 'Local authorities re-zone rural protocol land to industrial/commercial?',
+      a: 'Government circle rates jump 3x–10x — the on-chain circle-rate floor for $BMCM rises automatically, delivering instant capital gains to token holders.' },
+    { cat: 'Legal & Title Security', q: 'A land title dispute arises on a protocol plot after 5 years?',
+      a: 'Land is acquired only with 30-year non-encumbrance certificates and title insurance. On litigation, the Sinking Replacement Reserve swaps the disputed plot for an unencumbered one instantly.' },
+    { cat: 'Legal & Title Security', q: 'A landowner passes away during a 30-year lease?',
+      a: 'A registered 30-year lease deed runs with the land and binds legal heirs. The heir inherits the 70% $BMCM wallet and keeps receiving monthly rental dividends seamlessly.' },
+    { cat: 'Market & Financial Crisis', q: 'A major warehousing tenant (Flipkart/Amazon) defaults on rent?',
+      a: 'Multi-tenant diversification caps any single tenant at <5% of lease rent. Dark-store plots near cities re-lease to quick-commerce providers (Blinkit, Zepto, Instamart) within 30 days.' },
+    { cat: 'Market & Financial Crisis', q: 'Indian inflation surges to 15–20% per year?',
+      a: 'All commercial leases carry built-in 10–15% rent-escalation clauses, so rent rises with inflation — boosting buyback/burn volume and staker dividend payouts.' },
+    { cat: 'Technical & Network', q: 'The underlying L2 (Base / Polygon) shuts down?',
+      a: 'Daily state snapshots are recorded. A migration contract re-mints $BMCM 1:1 on Ethereum mainnet or Solana without losing any land-backing data.' },
+    { cat: 'Technical & Network', q: 'A user loses their private key holding $BMCM?',
+      a: 'ERC-3643 permissioned identity (PAN/Aadhaar KYC) lets the SPV execute an on-chain identity key recovery (forcedTransfer()) after 2FA video verification, reissuing tokens to a new wallet.' },
+    { cat: 'Tenant & Physical Land', q: 'A natural disaster damages physical warehouses?',
+      a: 'All structures carry 100% property & business-interruption insurance (HDFC ERGO, ICICI Lombard), reimbursing 100% of lost lease rent during repairs.' },
+    { cat: 'Tenant & Physical Land', q: 'Solar technology becomes obsolete?',
+      a: 'Solar plots re-purpose into EV-charging hubs, logistics depots or vertical hydroponic farms within 60 days.' },
+    { cat: 'Token Liquidity & Exchange', q: 'A centralized exchange (WazirX/CoinDCX) gets hacked?',
+      a: '$BMCM trades primarily on DEXs (Uniswap v3 / Raydium) where users keep 100% self-custody in non-custodial wallets (MetaMask, TrustWallet).' },
+    { cat: 'Token Liquidity & Exchange', q: 'A whale buys 51% of circulating $BMCM?',
+      a: 'Titles stay locked under BhoomiReserve SPV. To claim land the whale must run BurnAndClaimDeed(), permanently destroying 51% of circulating supply and raising land backing per remaining token.' }
+  ];
+
+  /* ---------- 6-phase 24-month roadmap detail — Launch Timeline doc ---------- */
+  const PHASES = [
+    { id: 'Phase 1', months: 'Months 1–3',  title: 'Legal & Testnet',
+      d: 'Incorporate GrinRex Technologies Ltd and BhoomiReserve SPV Pvt Ltd. Deploy L1 Devnet/Testnet. Complete 30-year NEC verification for the 10-acre seed parcel in the Jewar Airport corridor, UP.' },
+    { id: 'Phase 2', months: 'Months 4–6',  title: 'Seed Raise & $GR Genesis',
+      d: 'Close the ₹12.50 Cr ($1.5M) seed round. Complete the 10-acre seed land acquisition. GrinRex L1 mainnet launch & $GR coin genesis event.' },
+    { id: 'Phase 3', months: 'Months 7–9',  title: '$BMCM TGE & DEX Launch',
+      d: '$BMCM Token Generation Event — mint 404.6M tokens backed by 10 acres. List on Uniswap, WazirX, CoinDCX at ₹0.247. Activate the 100% lease-rent buyback & burn engine.' },
+    { id: 'Phase 4', months: 'Months 10–12', title: 'Landowner Lease Portal',
+      d: 'Launch the 30-year landowner lease portal (70/30 split). Scale the land reserve to 50 acres. $BMCM price reaches ₹0.285–₹0.315.' },
+    { id: 'Phase 5', months: 'Months 13–18', title: 'Tier-1 CEX & Sinking Fund',
+      d: 'List $GR and $BMCM on KuCoin, Gate.io, Bitget. Activate the 8% Sinking Land Replacement Reserve. Scale the reserve to 250 acres.' },
+    { id: 'Phase 6', months: 'Months 19–24', title: 'Sub-Tokens & Scaling',
+      d: 'Launch $GAME-REX and $SOCIAL-REX sub-tokens on GrinRex L1. Scale the land reserve to 750+ acres across 10 Indian states.' }
+  ];
+
+  /* ---------- 1-acre bootstrap: Year-1 month-by-month ---------- */
+  const BOOTSTRAP_MONTHS = [
+    { w: 'Month 1–2',   ops: 'Incorporate BhoomiReserve SPV Pvt Ltd. Sign the 30-year registered lease for 1 acre in the Jewar Airport corridor, UP.', fin: 'Mints 40,468,564 $BMCM tokens.' },
+    { w: 'Month 3',     ops: 'Deploy ERC-3643 smart contract. Transfer 70% (28.3M) to the landowner; 30% (12.1M) to treasury.', fin: 'Initial DEX liquidity listing at ₹0.247.' },
+    { w: 'Month 4–5',   ops: 'Lease the acre to a quick-commerce provider (Flipkart/Blinkit/Zepto) for warehousing at ₹83,333/month.', fin: 'First monthly lease rent lands in the SPV account.' },
+    { w: 'Month 6–9',   ops: 'Activate the 100% lease-revenue buyback & burn engine — ~250,000 tokens burned monthly off DEXs.', fin: 'Circulating supply drops every month.' },
+    { w: 'Month 10–12', ops: 'Year-1 audit: price at ₹0.285, landowner earning ₹70k/mo yield, 3 new landowners sign 30-year leases.', fin: 'Land reserve scales to 4 acres for Year 2.' }
+  ];
+
+  /* ---------- 1-acre lean vs 10-acre seed launch comparison ---------- */
+  const BOOTSTRAP_COMPARE = [
+    { metric: 'Upfront capital needed',   lean: '₹0 (zero capex, 30-yr lease)', seed: '₹10.0 Cr (~$1.2M)' },
+    { metric: 'Initial token supply',     lean: '40,468,564 $BMCM',             seed: '404,685,640 $BMCM' },
+    { metric: 'Year-1 gross rent income', lean: '₹10.0 Lakhs / yr',             seed: '₹1.25 Cr / yr' },
+    { metric: 'Year-1 tokens burned',     lean: '3.03M (7.5%)',                 seed: '40.4M (10.0%)' },
+    { metric: 'Year-1 staker APY',        lean: '12.5% cash dividend',          seed: '12.5% cash dividend' },
+    { metric: 'Year-2 land reserve',      lean: '4 acres (via 70/30 leases)',   seed: '50 acres' },
+    { metric: 'Execution risk',           lean: 'Ultra-low (zero debt)',        seed: 'Medium (needs seed raise)' }
+  ];
+
+  /* ---------- Seed round offering — Investor Deck ---------- */
+  const SEED = {
+    raise: '₹12.50 Cr', postMoney: '₹41.50 Cr', price: '₹0.160',
+    discount: '35% below the ₹0.247 TGE price', collateral: '10 Acres (404,685,640 sq cm), Jewar Airport / Yamuna Expressway corridor, UP',
+    use: [
+      { pct: 80, label: 'Seed land acquisition', detail: '₹10.0 Cr — acquisition & deed registration of 10 acres' },
+      { pct: 10, label: 'Audits & legal SPV', detail: '₹1.25 Cr — CertiK audit, RERA filings, SPV incorporation' },
+      { pct: 10, label: 'Liquidity & marketing', detail: '₹1.25 Cr — Uniswap v3 / WazirX / CoinDCX market-making' }
+    ]
+  };
+
+  /* ---------- 5 corporate revenue streams — Company Revenue Model ---------- */
+  const REVENUE_STREAMS = [
+    { name: 'Property Management & SPV Admin Fee', icon: 'fa-building', desc: '10–15% of gross rent deducted upfront for asset ops, tenant management, SRO filings, GPS fencing. ₹1.44 Cr/yr at 120 acres → ₹105 Cr/yr at 2,500 acres.' },
+    { name: 'GrinRex L1 Gas Validator Yield', icon: 'fa-bolt', desc: 'Genesis validator nodes earn 50% of network gas in $GR — ₹3.5 Cr to ₹15 Cr per year high-margin yield.' },
+    { name: '30% Treasury Appreciation & OTC Sales', icon: 'fa-vault', desc: 'Treasury $BMCM appreciates from ₹0.247 toward ₹4.448; small OTC sales to institutional VCs under 24-month lockups.' },
+    { name: '1.5% Secondary Market Royalties', icon: 'fa-arrow-right-arrow-left', desc: '1.5% on every exchange trade and deed redemption — ₹1.0 Cr/yr on ₹100 Cr annual volume.' },
+    { name: '10% Sub-Token Ecosystem Royalties', icon: 'fa-diagram-project', desc: '10% of all $GAME-REX / $SOCIAL-REX / $BIZ-REX transaction fees flow to corporate profits.' }
+  ];
+
+  /* ---------- 5-year corporate P&L (₹ Cr) ---------- */
+  const P5Y = {
+    rows: [
+      { name: '12% Property Management Fee', v: [0.15, 0.99, 6.48, 24.56, 105.00] },
+      { name: 'L1 Gas Validator Yield',      v: [0.25, 1.20, 4.50, 12.00, 35.00] },
+      { name: '1% Trading Royalty Fees',     v: [0.10, 0.60, 3.20, 10.50, 42.00] },
+      { name: 'Sub-Token Ecosystem Royalties', v: [0.00, 0.25, 1.80, 8.50, 28.00] }
+    ],
+    gross:  [0.50, 3.04, 15.98, 55.56, 210.00],
+    opex:   [0.87, 1.80, 4.20, 12.00, 28.00],
+    ebitda: [-0.37, 1.24, 11.78, 43.56, 182.00]
+  };
+
+  /* ---------- 5-year investor pro-forma — Investor Deck ---------- */
+  const INVESTOR_PROFORMA = [
+    { name: 'Treasury land reserve',      v: ['10', '50', '250', '750', '2,500 acres'] },
+    { name: 'Treasury land value (₹ Cr)', v: ['12.5', '75.0', '450.0', '1,575.0', '6,250.0'] },
+    { name: 'Gross annual lease rent (₹ Cr)', v: ['1.25', '8.25', '54.0', '204.7', '875.0'] },
+    { name: 'Tokens bought & burned / yr', v: ['40.4M', '202.3M', '809.3M', '2.02B', '5.05B $BMCM'] },
+    { name: 'Staking cash dividend APY',  v: ['12.5%', '13.8%', '14.2%', '15.0%', '15.5%'] },
+    { name: '$BMCM floor price (₹)',      v: ['0.247', '0.412', '0.618', '0.865', '1.548'] },
+    { name: 'Combined staker return / yr', v: ['+27.5%', '+31.3%', '+34.2%', '+38.0%', '+42.5%'] }
+  ];
+
+  /* ---------- Category page registry (file, tagline, hero facts) ---------- */
+  const CAT_PAGES = {
+    whitepaper: {
+      tagline: 'The institutional specification: 12 core equations, the 70/30 landowner lease program, the 30-year lease structure and the sinking-reserve safeguard.',
+      facts: [
+        { k: 'Core equations', v: '12', sub: 'mathematical foundations' },
+        { k: 'Landowner split', v: '70 / 30', sub: 'of every tokenized lease' },
+        { k: 'Lease term', v: '30 yrs', sub: 'registered NEC-backed deeds' },
+        { k: 'Sinking reserve', v: '8%', sub: 'of lease rent at every expiry' }
+      ]
+    },
+    tokenomics: {
+      tagline: 'Every rupee of the model — the single-token 10-year lifecycle, portfolio simulation, stakeholder incentives and the treasury unlock engine.',
+      facts: [
+        { k: 'Y10 token price', v: '₹4.448', sub: 'from ₹0.247 at TGE' },
+        { k: 'Y10 dividends', v: '₹3.180', sub: 'cumulative per token' },
+        { k: 'Total realized ROI', v: '30.8x', sub: 'per single token, Y0→Y10' },
+        { k: 'Y10 portfolio', v: '₹2,250 Cr', sub: '50,000 acres simulated' }
+      ]
+    },
+    land: {
+      tagline: 'The tokenization engines: valuation-weighted land leases, agricultural monetization, and residential housing ($SMART-HOMES) on one master token.',
+      facts: [
+        { k: 'Tokens / acre', v: '40.47M', sub: '40,468,564 sq cm' },
+        { k: 'Entry point', v: '₹10', sub: 'micro-fractions of land' },
+        { k: 'Housing APY boost', v: '3% → 15%', sub: '$SMART-HOMES engine' },
+        { k: 'Deed redemption', v: 'Burn', sub: '40.47M tokens → 1 acre title' }
+      ]
+    },
+    strategy: {
+      tagline: 'How the project ships: the 6-phase 24-month roadmap, the zero-capex 1-acre bootstrap and the freehold-first 3-year plan.',
+      facts: [
+        { k: 'Roadmap length', v: '24 mo', sub: '6 phases, month-by-month' },
+        { k: 'Bootstrap capex', v: '₹0', sub: '1-acre Year-1 launch' },
+        { k: 'Y2 reserve (lean)', v: '4 acres', sub: 'organic landowner referrals' },
+        { k: 'Freehold window', v: 'Y1–Y3', sub: 'rent fully reinvested' }
+      ]
+    },
+    finance: {
+      tagline: 'The money story: the ₹12.50 Cr seed round, 5 corporate revenue streams, 5-year P&L and the investor returns model.',
+      facts: [
+        { k: 'Seed raise', v: '₹12.50 Cr', sub: 'at ₹0.160 per token' },
+        { k: 'Post-money', v: '₹41.50 Cr', sub: '35% seed discount' },
+        { k: 'Y5 gross revenue', v: '₹210 Cr', sub: 'corporate, 5 streams' },
+        { k: 'Y5 EBITDA', v: '₹182 Cr', sub: 'break-even in Year 2' }
+      ]
+    },
+    blockchain: {
+      tagline: 'The infrastructure: GrinChain sovereign L1, the $GR dual-asset economy, production Solidity contracts and developer tooling.',
+      facts: [
+        { k: '$GR total supply', v: '1B', sub: 'native gas coin' },
+        { k: 'EVM compatible', v: 'Yes', sub: 'teleport bridges included' },
+        { k: 'Smart contracts', v: '3', sub: 'production Solidity' },
+        { k: 'Consensus', v: 'KYC', sub: 'identity-aware validators' }
+      ]
+    },
+    compliance: {
+      tagline: 'Risk, stress-tested: 12 black-swan "What If?" scenarios with architectural solutions, single-tier referral compliance and the 14/14 launch audit.',
+      facts: [
+        { k: 'Stress scenarios', v: '12', sub: '6 risk categories' },
+        { k: 'Audit matrix', v: '14/14', sub: 'documents verified' },
+        { k: 'Re-verification', v: '10x', sub: 'deep audit passes' },
+        { k: 'Referral tiers', v: '1', sub: 'single-tier, anti-MLM' }
+      ]
+    },
+    ecosystem: {
+      tagline: 'What the token actually does: 120 concrete utilities across 12 sectors plus the 8-industry GrinRex sub-token ecosystem.',
+      facts: [
+        { k: 'Utilities', v: '120+', sub: 'across 12 sectors' },
+        { k: 'Sub-tokens', v: '8', sub: '$GAME, $SOCIAL, $BIZ…' },
+        { k: 'Master royalty', v: '10%', sub: 'sub-token fees burn $BMCM' },
+        { k: 'Staking rewards', v: '₹ INR', sub: 'monthly cash dividends' }
+      ]
+    }
+  };
+
+  window.BMCM = { CATS, MATURITY, LEVEL, DOCS, ROADMAP, CHECKLIST, PILLARS, STATUS, PRICE,
+    TOKENS_PER_ACRE, SQFT_PER_ACRE, TGE_PRICE, SEED_PRICE, SINKING_PCT, LANDOWNER_PCT,
+    TOKEN_10YR, GR_ALLOCATION, STRESS_TESTS, PHASES, BOOTSTRAP_MONTHS, BOOTSTRAP_COMPARE,
+    SEED, REVENUE_STREAMS, P5Y, INVESTOR_PROFORMA, CAT_PAGES };
 })();

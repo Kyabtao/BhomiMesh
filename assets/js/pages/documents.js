@@ -43,12 +43,12 @@
     });
   }
 
-  /* ---------- Card grid ---------- */
+  /* ---------- Card grid (template shared via BMCM_UI.docCardHTML) ---------- */
   function renderCards() {
     const grid = document.getElementById('cardsGrid');
     if (!grid) return;
-    const { CATS, MATURITY, LEVEL } = window.BMCM;
-    const { esc, href } = window.BMCM_UI;
+    const { CATS } = window.BMCM;
+    const { esc, docCardHTML } = window.BMCM_UI;
 
     const list = filteredDocs();
     document.getElementById('resultCount').innerHTML =
@@ -57,31 +57,7 @@
       (state.q.trim() ? ` matching “<strong class="text-slate-300">${esc(state.q.trim())}</strong>”` : '');
 
     document.getElementById('emptyState').classList.toggle('hidden', list.length > 0);
-
-    grid.innerHTML = list.map((d, i) => {
-      const c = CATS[d.c], mat = MATURITY[d.m];
-      return `<article class="card-fade group flex flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-5 transition hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-950/40" style="animation:fadeUp .4s ease both;animation-delay:${Math.min(i * 40, 400)}ms">
-        <div class="flex items-start justify-between gap-3">
-          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${c.tile} text-white shadow"><i class="fa-solid ${c.icon}"></i></span>
-          <div class="flex flex-wrap justify-end gap-1.5">
-            <span class="rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${c.tag}">${esc(c.label)}</span>
-            ${d.ed ? `<span class="rounded-full border border-slate-600 bg-slate-800 px-2 py-1 text-[10px] font-bold text-slate-400">${esc(d.ed)}</span>` : ''}
-          </div>
-        </div>
-        <h3 class="mt-4 text-base font-bold leading-snug text-white group-hover:text-emerald-200">${esc(d.t)}</h3>
-        <p class="mt-2 flex-1 text-[13px] leading-relaxed text-slate-400">${esc(d.d)}</p>
-        <div class="mt-3 flex flex-wrap gap-1.5">
-          ${d.b.map(b => `<span class="rounded-md bg-slate-800/90 px-2 py-1 text-[10px] font-semibold text-slate-300"><i class="fa-solid fa-tag mr-1 text-[9px] text-slate-500"></i>${esc(b)}</span>`).join('')}
-        </div>
-        <div class="mt-4 flex items-center justify-between border-t border-slate-800 pt-3.5 text-xs">
-          <span class="flex items-center gap-2">
-            <span class="flex items-center gap-1.5 ${mat.cls}"><span class="h-1.5 w-1.5 rounded-full ${mat.dot}"></span>${esc(d.m)}</span>
-            <span class="rounded-md border px-1.5 py-0.5 text-[10px] font-bold ${LEVEL[d.l]}">${esc(d.l)}</span>
-          </span>
-          <a href="${href(d.f)}" target="_blank" rel="noopener" class="font-bold text-emerald-300 transition hover:text-emerald-200">Open Spec <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
-        </div>
-      </article>`;
-    }).join('');
+    grid.innerHTML = list.map(docCardHTML).join('');
   }
 
   /* ---------- Wire up controls ---------- */
@@ -116,8 +92,29 @@
     });
   }
 
+  /* ---------- Category tiles (links to dedicated category pages) ---------- */
+  function renderCatTiles() {
+    const host = document.getElementById('catTiles');
+    if (!host) return;
+    const { CATS, DOCS } = window.BMCM;
+    const { esc } = window.BMCM_UI;
+    const cats = ['whitepaper', 'tokenomics', 'land', 'strategy', 'finance', 'blockchain', 'compliance', 'ecosystem'];
+    host.innerHTML = cats.map(cat => {
+      const c = CATS[cat];
+      const n = DOCS.filter(d => d.c === cat).length;
+      return `<a href="${cat}.html" class="group flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/70 px-4 py-3 transition hover:-translate-y-0.5 hover:border-emerald-500/40">
+        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${c.tile} text-sm text-white"><i class="fa-solid ${c.icon}"></i></span>
+        <span class="min-w-0">
+          <span class="block truncate text-[13px] font-bold text-slate-200 group-hover:text-emerald-200">${esc(c.label)}</span>
+          <span class="block text-[11px] text-slate-500">${n} docs · open page <i class="fa-solid fa-arrow-right text-[9px]"></i></span>
+        </span>
+      </a>`;
+    }).join('');
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     BMCM_PARTIALS.injectChrome('documents');
+    renderCatTiles();
     renderChips();
     renderCards();
     initControls();

@@ -27,6 +27,33 @@
     toastTimer = setTimeout(() => t.classList.remove('show'), 3800);
   }
 
+  /* ---------- Document card template (shared by documents page + category pages) ---------- */
+  function docCardHTML(d, i) {
+    const { CATS, MATURITY, LEVEL } = window.BMCM;
+    const c = CATS[d.c], mat = MATURITY[d.m];
+    return `<article class="card-fade group flex flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-5 transition hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-950/40" style="animation:fadeUp .4s ease both;animation-delay:${Math.min(i * 40, 400)}ms">
+      <div class="flex items-start justify-between gap-3">
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${c.tile} text-white shadow"><i class="fa-solid ${c.icon}"></i></span>
+        <div class="flex flex-wrap justify-end gap-1.5">
+          <span class="rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${c.tag}">${esc(c.label)}</span>
+          ${d.ed ? `<span class="rounded-full border border-slate-600 bg-slate-800 px-2 py-1 text-[10px] font-bold text-slate-400">${esc(d.ed)}</span>` : ''}
+        </div>
+      </div>
+      <h3 class="mt-4 text-base font-bold leading-snug text-white group-hover:text-emerald-200">${esc(d.t)}</h3>
+      <p class="mt-2 flex-1 text-[13px] leading-relaxed text-slate-400">${esc(d.d)}</p>
+      <div class="mt-3 flex flex-wrap gap-1.5">
+        ${d.b.map(b => `<span class="rounded-md bg-slate-800/90 px-2 py-1 text-[10px] font-semibold text-slate-300"><i class="fa-solid fa-tag mr-1 text-[9px] text-slate-500"></i>${esc(b)}</span>`).join('')}
+      </div>
+      <div class="mt-4 flex items-center justify-between border-t border-slate-800 pt-3.5 text-xs">
+        <span class="flex items-center gap-2">
+          <span class="flex items-center gap-1.5 ${mat.cls}"><span class="h-1.5 w-1.5 rounded-full ${mat.dot}"></span>${esc(d.m)}</span>
+          <span class="rounded-md border px-1.5 py-0.5 text-[10px] font-bold ${LEVEL[d.l]}">${esc(d.l)}</span>
+        </span>
+        <a href="${href(d.f)}" target="_blank" rel="noopener" class="font-bold text-emerald-300 transition hover:text-emerald-200">Open Spec <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+      </div>
+    </article>`;
+  }
+
   /* ---------- KPI count-up (fires when cards scroll into view) ---------- */
   function animateKPIs(root = document) {
     const nums = root.querySelectorAll('.kpi-num');
@@ -85,5 +112,5 @@
     });
   }
 
-  window.BMCM_UI = { $, $$, esc, href, toast, animateKPIs, initSync };
+  window.BMCM_UI = { $, $$, esc, href, toast, docCardHTML, animateKPIs, initSync };
 })();

@@ -10,10 +10,28 @@
 
   const PAGES = [
     { id: 'home',      href: 'index.html',      label: 'Home' },
-    { id: 'documents', href: 'documents.html',  label: 'Documents' },
+    { id: 'documents', href: 'documents.html',  label: 'All Documents' },
     { id: 'roadmap',   href: 'roadmap.html',    label: 'Roadmap' },
     { id: 'docs',      href: 'docs/README.md',  label: 'Docs' }
   ];
+
+  const CATS_NAV = [
+    { href: 'whitepaper.html', label: 'Whitepaper & Vision',     icon: 'fa-book-open' },
+    { href: 'tokenomics.html', label: 'Tokenomics & Earnings',   icon: 'fa-chart-line' },
+    { href: 'land.html',       label: 'Land & Property Engines', icon: 'fa-house-chimney' },
+    { href: 'strategy.html',   label: 'Strategy & Roadmap',      icon: 'fa-route' },
+    { href: 'finance.html',    label: 'Investment & Finance',    icon: 'fa-hand-holding-dollar' },
+    { href: 'blockchain.html', label: 'Blockchain & Dev',        icon: 'fa-cubes' },
+    { href: 'compliance.html', label: 'Compliance & Risk',       icon: 'fa-shield-halved' },
+    { href: 'ecosystem.html',  label: 'Ecosystem & Utilities',   icon: 'fa-satellite-dish' }
+  ];
+
+  const navLink = (href, label, active) =>
+    `<a href="${href}" class="transition ${active ? 'text-emerald-300' : 'text-slate-300 hover:text-emerald-300'}">${label}</a>`;
+
+  const mLink = (href, icon, label, active) =>
+    `<a href="${href}" class="flex items-center gap-2 rounded-lg px-3 py-2 transition ${active ? 'bg-emerald-500/10 text-emerald-300' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}">
+      <i class="fa-solid ${icon} w-4 ${active ? 'text-emerald-400' : 'text-slate-500'}"></i>${label}</a>`;
 
   const NAV_HTML = (active) => `
   <nav class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/85 backdrop-blur">
@@ -28,14 +46,45 @@
         </span>
       </a>
       <div class="hidden items-center gap-6 text-sm font-medium lg:flex">
-        ${PAGES.map(p => `
-          <a href="${p.href}" class="transition ${p.id === active ? 'text-emerald-300' : 'text-slate-300 hover:text-emerald-300'}">${p.label}</a>`).join('')}
+        ${navLink('index.html', 'Home', active === 'home')}
+        <div class="group relative">
+          <button class="flex items-center gap-1.5 transition ${active === 'categories' ? 'text-emerald-300' : 'text-slate-300 hover:text-emerald-300'}">
+            Categories <i class="fa-solid fa-chevron-down text-[10px]"></i>
+          </button>
+          <div class="invisible absolute left-1/2 top-full -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100">
+            <div class="w-64 rounded-xl border border-slate-800 bg-slate-900 p-2 shadow-2xl shadow-slate-950">
+              <a href="documents.html" class="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 transition hover:bg-slate-800">
+                <span class="flex items-center gap-2.5"><i class="fa-solid fa-border-all w-4 text-slate-400"></i>All Documents</span>
+                <span class="rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-slate-400">34</span>
+              </a>
+              <div class="mx-3 my-1.5 border-t border-slate-800"></div>
+              ${CATS_NAV.map(c => `
+              <a href="${c.href}" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800 hover:text-white">
+                <i class="fa-solid ${c.icon} w-4 text-slate-500"></i>${c.label}
+              </a>`).join('')}
+            </div>
+          </div>
+        </div>
+        ${navLink('roadmap.html', 'Roadmap', active === 'roadmap')}
+        ${navLink('docs/README.md', 'Docs', active === 'docs')}
       </div>
       <div class="flex items-center gap-3">
         <span id="lastSync" class="hidden text-xs text-slate-500 sm:block">Not synced yet</span>
         <button id="syncBtn" class="flex items-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-3.5 py-2 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
           <i id="syncIcon" class="fa-solid fa-rotate text-xs"></i><span id="syncLabel">Sync Docs</span>
         </button>
+        <button id="menuBtn" class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition hover:text-white lg:hidden" aria-label="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t border-slate-800 bg-slate-950/95 px-4 py-4 lg:hidden">
+      <div class="grid grid-cols-2 gap-1.5 text-sm font-medium">
+        ${mLink('index.html', 'fa-house', 'Home', active === 'home')}
+        ${mLink('documents.html', 'fa-border-all', 'All Documents', active === 'documents')}
+        ${CATS_NAV.map(c => mLink(c.href, c.icon, c.label, false)).join('')}
+        ${mLink('roadmap.html', 'fa-route', 'Roadmap', active === 'roadmap')}
+        ${mLink('docs/README.md', 'fa-circle-question', 'Docs', active === 'docs')}
       </div>
     </div>
   </nav>`;
@@ -94,6 +143,16 @@
     if (navHost) navHost.outerHTML = NAV_HTML(activePage);
     if (footHost) footHost.outerHTML = FOOTER_HTML;
     document.body.insertAdjacentHTML('beforeend', TOAST_HTML);
+
+    const menuBtn = document.getElementById('menuBtn');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+        menuBtn.firstElementChild.className =
+          menu.classList.contains('hidden') ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
+      });
+    }
   }
 
   window.BMCM_PARTIALS = { injectChrome, PAGES };

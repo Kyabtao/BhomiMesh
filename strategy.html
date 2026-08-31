@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy & Roadmap — BhoomiMesh ($BMCM)</title>
+<meta name="description" content="The 6-phase 24-month launch roadmap, the zero-capex 1-acre Year-1 bootstrap timeline and the freehold-first 3-year plan.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%8E%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/js/tailwind.config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-cat="strategy" class="font-sans text-slate-200 antialiased selection:bg-emerald-500/30">
+
+<div id="siteNav"></div>
+
+<header class="bg-grid border-b border-slate-800/70">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <a href="index.html" class="text-xs font-semibold text-slate-500 transition hover:text-emerald-300"><i class="fa-solid fa-arrow-left mr-1.5"></i>Back to home</a>
+    <div id="catHead" class="mt-3"></div>
+    <div id="catFacts" class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4"></div>
+  </div>
+</header>
+
+<main class="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+  <section class="animate-fade-up"><div class="mb-5 flex flex-wrap gap-2">
+  <button class="tab-btn inner-tab-btn active rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-300 transition" data-group="str" data-panel="phases"><i class="fa-solid fa-route mr-2 text-emerald-400"></i>24-Month Phases</button>
+  <button class="tab-btn inner-tab-btn rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-300 transition" data-group="str" data-panel="bootstrap"><i class="fa-solid fa-seedling mr-2 text-lime-400"></i>1-Acre Bootstrap (Y1)</button>
+  <button class="tab-btn inner-tab-btn rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-300 transition" data-group="str" data-panel="compare"><i class="fa-solid fa-scale-balanced mr-2 text-sky-400"></i>1-Acre vs 10-Acre</button>
+</div>
+<div data-group="str" data-panel="phases" class="inner-tab-panel rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
+  <div class="mb-5 flex items-center justify-between">
+    <h2 class="text-lg font-extrabold text-white">Six phases, twenty-four months</h2>
+    <a href="roadmap.html" class="text-xs font-bold text-emerald-300 hover:text-emerald-200">Open live tracker <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></a>
+  </div>
+  <div id="strPhases"></div>
+</div>
+<div data-group="str" data-panel="bootstrap" class="inner-tab-panel hidden rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
+  <h2 class="mb-1 text-lg font-extrabold text-white">Zero-capex Year 1 — month by month</h2>
+  <p class="mb-4 text-sm text-slate-500">₹0 upfront land capital: the 70/30 lease program mints 40.47M tokens and pays for itself from warehousing rent.</p>
+  <div class="overflow-x-auto"><div id="strBoot"></div></div>
+</div>
+<div data-group="str" data-panel="compare" class="inner-tab-panel hidden rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
+  <h2 class="mb-4 text-lg font-extrabold text-white">Lean bootstrap vs seed-funded launch</h2>
+  <div class="overflow-x-auto"><div id="strComp"></div></div>
+</div>
+<div class="mt-5 rounded-2xl border border-violet-500/25 bg-violet-500/5 p-5">
+  <h3 class="flex items-center gap-2 text-sm font-bold text-white"><i class="fa-solid fa-landmark text-violet-400"></i>Freehold-First 3-Year Plan</h3>
+  <p class="mt-2 text-[13px] leading-relaxed text-slate-400">Years 1–3 run on <strong class="text-slate-200">100% freehold company land</strong> with every rupee of lease rent reinvested into more land — the landowner lease portal (70/30) only opens in <strong class="text-slate-200">Year 4</strong>, maximizing rent capture while the reserve compounds.</p>
+</div></section>
+  <section class="mt-14">
+    <div class="flex items-center justify-between">
+      <h2 class="text-xl font-extrabold text-white">Documents in this category</h2>
+      <span id="catCount" class="text-xs text-slate-500"></span>
+    </div>
+    <div id="catCards" class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"></div>
+  </section>
+  <nav id="catPager" class="mt-12 flex items-center justify-between gap-4"></nav>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/data-utilities.js"></script>
+<script src="assets/js/partials.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/pages/categories.js"></script>
+</body>
+</html>

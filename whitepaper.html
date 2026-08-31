@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whitepaper & Vision — BhoomiMesh ($BMCM)</title>
+<meta name="description" content="The institutional whitepaper suite: 12 core equations, 70/30 landowner lease program, 30-year leases, sinking reserve — with an interactive 70/30 split calculator.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%8E%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/js/tailwind.config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-cat="whitepaper" class="font-sans text-slate-200 antialiased selection:bg-emerald-500/30">
+
+<div id="siteNav"></div>
+
+<header class="bg-grid border-b border-slate-800/70">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <a href="index.html" class="text-xs font-semibold text-slate-500 transition hover:text-emerald-300"><i class="fa-solid fa-arrow-left mr-1.5"></i>Back to home</a>
+    <div id="catHead" class="mt-3"></div>
+    <div id="catFacts" class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4"></div>
+  </div>
+</header>
+
+<main class="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+  <section class="animate-fade-up"><div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
+  <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="flex items-center gap-2 text-lg font-extrabold text-white"><i class="fa-solid fa-scale-balanced text-emerald-400"></i>70 / 30 Landowner Split Calculator</h2>
+      <p class="mt-1 text-sm text-slate-500">Tokenize any acreage and see the instant token split and TGE valuation (₹0.247 / token).</p>
+    </div>
+    <label class="flex items-center gap-3 text-sm">
+      <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Acres</span>
+      <input id="wpAcres" type="number" min="0.5" max="1000" step="0.5" value="10"
+        class="w-28 rounded-lg border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm font-bold text-white outline-none focus:border-emerald-500/60">
+    </label>
+  </div>
+  <div class="mt-5 flex h-7 w-full overflow-hidden rounded-full text-[11px] font-bold">
+    <div class="flex items-center justify-center bg-emerald-500/80 text-slate-950" style="width:70%">70% · Landowner</div>
+    <div class="flex items-center justify-center bg-amber-500/80 text-slate-950" style="width:30%">30% · Treasury</div>
+  </div>
+  <div class="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-4">
+    <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
+  <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Total tokens minted</div>
+  <div class="mt-1 text-xl font-extrabold text-white"><span id="wpTokens">—</span></div>
+  <div class="mt-0.5 text-[11px] text-slate-500">40,468,564 per acre</div>
+</div>
+    <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
+  <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Landowner · 70%</div>
+  <div class="mt-1 text-xl font-extrabold text-emerald-300"><span id="wpLand">—</span></div>
+  <div class="mt-0.5 text-[11px] text-slate-500"><span id="wpLandVal"></span></div>
+</div>
+    <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
+  <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Treasury · 30%</div>
+  <div class="mt-1 text-xl font-extrabold text-amber-300"><span id="wpTres">—</span></div>
+  <div class="mt-0.5 text-[11px] text-slate-500"><span id="wpTresVal"></span></div>
+</div>
+    <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
+  <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Value at TGE</div>
+  <div class="mt-1 text-xl font-extrabold text-white"><span id="wpValue">—</span></div>
+  <div class="mt-0.5 text-[11px] text-slate-500">at ₹0.247 / token</div>
+</div>
+  </div>
+  <p class="mt-4 text-xs leading-relaxed text-slate-500"><i class="fa-solid fa-shield-halved mr-1.5 text-emerald-400"></i>
+  8% of all lease rent accrues to the Sinking Land Replacement Reserve — used at each 30-year lease expiry to replace the land or execute a sunset burn.</p>
+</div></section>
+  <section class="mt-14">
+    <div class="flex items-center justify-between">
+      <h2 class="text-xl font-extrabold text-white">Documents in this category</h2>
+      <span id="catCount" class="text-xs text-slate-500"></span>
+    </div>
+    <div id="catCards" class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"></div>
+  </section>
+  <nav id="catPager" class="mt-12 flex items-center justify-between gap-4"></nav>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/data-utilities.js"></script>
+<script src="assets/js/partials.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/pages/categories.js"></script>
+</body>
+</html>
