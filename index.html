@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BhoomiMesh ($BMCM) — Project Ecosystem Dashboard</title>
+<meta name="description" content="Home of the BhoomiMesh RWA land-tokenization protocol on GrinRex L1: KPIs, 10-year token economics, audit pillars and entry points to the document suite and roadmap.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%8E%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/js/tailwind.config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="font-sans text-slate-200 antialiased selection:bg-emerald-500/30">
+
+<div id="siteNav"></div>
+
+<!-- ============ HERO ============ -->
+<header class="bg-grid border-b border-slate-800/70">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.25fr_1fr] lg:py-20">
+    <div class="animate-fade-up">
+      <span class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+        <i class="fa-solid fa-mountain-sun"></i> India's RWA Land Tokenization Protocol
+      </span>
+      <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+        BhoomiMesh <span class="grad-text">— tokenizing Indian land, on-chain.</span>
+      </h1>
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+        <strong class="text-slate-200">$BMCM</strong> converts verified Indian real estate into fractional, tradable tokens —
+        every token backed by square centimeters of physical land — on the sovereign
+        <strong class="text-slate-200">GrinRex L1</strong> blockchain (<span class="text-amber-300">$GR</span>).
+        Explore the complete <strong class="text-slate-200">34-document specification suite</strong>: whitepapers, tokenomics engines,
+        the 24-month launch roadmap, stakeholder economics and 10-times-audit results.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="documents.html" class="rounded-xl bg-emerald-500 px-5 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-900/40 transition hover:bg-emerald-400">
+          <i class="fa-solid fa-layer-group mr-2"></i>Browse 34 Spec Documents
+        </a>
+        <a href="roadmap.html" class="rounded-xl border border-slate-700 bg-slate-900/70 px-5 py-3 text-sm font-bold text-slate-200 transition hover:border-slate-500 hover:text-white">
+          <i class="fa-solid fa-route mr-2"></i>24-Month Roadmap
+        </a>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-2 text-xs font-semibold">
+        <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-slate-300">1 Acre = 40.4M $BMCM</span>
+        <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-slate-300">70 / 30 Landowner Split</span>
+        <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-slate-300">30-Year Lease</span>
+        <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-slate-300">8% Sinking Reserve</span>
+        <span class="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-slate-300">100% Rent Buyback &amp; Burn</span>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 content-center gap-4 animate-fade-up" style="animation-delay:120ms">
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Total $BMCM Supply</div>
+        <div class="mt-1 text-2xl font-extrabold text-white">404.6M</div>
+        <div class="mt-1 text-xs text-slate-500">backed by 10-acre seed reserve</div>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">TGE Price</div>
+        <div class="mt-1 text-2xl font-extrabold text-emerald-300">₹0.247</div>
+        <div class="mt-1 text-xs text-slate-500">= 1 sq cm of Indian land</div>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Landowner Share</div>
+        <div class="mt-1 text-2xl font-extrabold text-amber-300">70%</div>
+        <div class="mt-1 text-xs text-slate-500">30% protocol treasury</div>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Sinking Reserve</div>
+        <div class="mt-1 text-2xl font-extrabold text-sky-300">8%</div>
+        <div class="mt-1 text-xs text-slate-500">lease-replacement fund</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ KPI CARDS ============ -->
+<section class="mx-auto max-w-7xl px-4 sm:px-6">
+  <div class="grid grid-cols-2 gap-4 py-10 md:grid-cols-3 xl:grid-cols-6" id="kpiGrid">
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Spec Documents</span>
+        <i class="fa-solid fa-file-lines text-emerald-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="34">0</span></div>
+      <div class="mt-1 text-xs text-slate-500">in HST/ archive</div>
+    </div>
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Categories</span>
+        <i class="fa-solid fa-folder-tree text-sky-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="9">0</span></div>
+      <div class="mt-1 text-xs text-slate-500">ecosystem domains</div>
+    </div>
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Protocol Utilities</span>
+        <i class="fa-solid fa-list-check text-amber-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="120">0</span><span class="text-amber-300">+</span></div>
+      <div class="mt-1 text-xs text-slate-500">across 12 sectors</div>
+    </div>
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Active Tasks</span>
+        <i class="fa-solid fa-circle-notch text-violet-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="8">0</span></div>
+      <div class="mt-1 text-xs text-slate-500">in progress right now</div>
+    </div>
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Land Reserve @ M12</span>
+        <i class="fa-solid fa-map text-emerald-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="50">0</span><span class="text-lg text-emerald-300"> acres</span></div>
+      <div class="mt-1 text-xs text-slate-500">of 50,000-acre Y10 target</div>
+    </div>
+    <div class="kpi card-fade rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">10-Yr Token ROI</span>
+        <i class="fa-solid fa-arrow-trend-up text-amber-400"></i>
+      </div>
+      <div class="mt-2 text-3xl font-extrabold text-white"><span class="kpi-num" data-target="30.8" data-decimals="1">0</span><span class="text-amber-300">x</span></div>
+      <div class="mt-1 text-xs text-slate-500">₹0.247 → ₹7.628 realized</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOKEN ECONOMICS ============ -->
+<section class="border-y border-slate-800/70 bg-slate-900/40">
+  <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1fr_1.3fr]">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Token Economics</span>
+      <h2 class="mt-2 text-2xl font-extrabold text-white sm:text-3xl">One $BMCM token, ten years of land</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-400">
+        The single-token lifecycle from the master specs: buy at <strong class="text-slate-200">₹0.247</strong> (Year 0),
+        collect annual cash dividends from 30-year lease rents, ride the circle-rate floor as land appreciates,
+        and exit at Year 10 for <strong class="text-emerald-300">₹4.448</strong> plus <strong class="text-emerald-300">₹3.180</strong> cumulative dividends.
+      </p>
+      <div class="mt-5 grid grid-cols-3 gap-3 text-center">
+        <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+          <div class="text-lg font-extrabold text-white">₹4.448</div><div class="text-[11px] text-slate-500">Y10 token price</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+          <div class="text-lg font-extrabold text-white">₹3.180</div><div class="text-[11px] text-slate-500">Y10 cumulative dividends</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+          <div class="text-lg font-extrabold text-amber-300">30.8x</div><div class="text-[11px] text-slate-500">total realized ROI</div>
+        </div>
+      </div>
+      <a href="HST/Single_Token_Price_Calculation_Chart.html" target="_blank" rel="noopener" class="mt-5 inline-block text-sm font-semibold text-emerald-300 hover:text-emerald-200">
+        Open full 10-year chart <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+      </a>
+    </div>
+    <div class="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 sm:p-6">
+      <div class="mb-2 flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">$BMCM Token Price — ₹ (₹/sq cm backing)</span>
+        <span class="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-300"><span class="h-2 w-2 animate-pulse-soft rounded-full bg-emerald-400"></span> 10-Yr Projection</span>
+      </div>
+      <svg id="priceChart" viewBox="0 0 640 300" class="h-auto w-full" role="img" aria-label="Line chart of one BhoomiMesh token price from 0.247 rupees at year zero to 4.448 rupees at year ten"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGES ============ -->
+<section class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+  <div class="grid gap-5 md:grid-cols-2">
+    <a href="documents.html" class="group flex items-start gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 p-6 transition hover:-translate-y-0.5 hover:border-emerald-500/40">
+      <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-white shadow"><i class="fa-solid fa-layer-group"></i></span>
+      <span>
+        <span class="block text-base font-bold text-white group-hover:text-emerald-200">Document Suite Browser</span>
+        <span class="mt-1 block text-sm leading-relaxed text-slate-400">Search and filter all 34 specification documents across 9 categories — whitepapers, tokenomics engines, investor decks, compliance audits and more.</span>
+        <span class="mt-3 inline-block text-xs font-bold text-emerald-300">Open page <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
+      </span>
+    </a>
+    <a href="roadmap.html" class="group flex items-start gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 p-6 transition hover:-translate-y-0.5 hover:border-emerald-500/40">
+      <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-purple-700 text-white shadow"><i class="fa-solid fa-route"></i></span>
+      <span>
+        <span class="block text-base font-bold text-white group-hover:text-emerald-200">Milestones &amp; Task Schedule</span>
+        <span class="mt-1 block text-sm leading-relaxed text-slate-400">Live status board for the 24-month master roadmap (15 phases) and the TGE pre-launch checklist (10 tasks) with owners, windows and progress.</span>
+        <span class="mt-3 inline-block text-xs font-bold text-emerald-300">Open page <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ 7 PILLARS ============ -->
+<section class="border-t border-slate-800/70">
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+    <div class="text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Audit Result</span>
+      <h2 class="mt-2 text-2xl font-extrabold text-white sm:text-3xl">7 Core Pillars — 100% Verified</h2>
+      <p class="mx-auto mt-2 max-w-2xl text-sm text-slate-500">
+        The Web3/RWA launch standard requires 7 documentation pillars. The 14/14 verification audit matrix reports
+        <strong class="text-emerald-300">100% complete with zero missing items</strong> — every pillar is covered by the suite.
+      </p>
+    </div>
+    <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" id="pillarGrid"></div>
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-500/5 px-5 py-4 text-sm">
+      <i class="fa-solid fa-circle-check text-lg text-emerald-400"></i>
+      <span class="font-semibold text-slate-200">Final audit result:</span>
+      <span class="text-slate-400">14/14 industry-required categories · 34 workspace files · 0 missing documents · 10x re-verification passed</span>
+    </div>
+  </div>
+</section>
+
+<div id="siteFooter"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/partials.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/pages/home.js"></script>
+</body>
+</html>
