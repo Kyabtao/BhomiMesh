@@ -1,6 +1,6 @@
 # Page: Documents — `documents.html`
 
-Browser for the full 34-document BhoomiMesh specification suite: client-side search, category
+Browser for the full 28-document BhoomiMesh specification suite: client-side search, category
 filter chips, a responsive card grid and a graceful empty state. Every card links out to the
 real source document in `HST/`.
 
@@ -13,7 +13,7 @@ real source document in `HST/`.
 |---|---|---|
 | Page header (back link, title, source note, search box) | `docSyncNote`, `searchInput`, `clearSearch` | Search updates the grid live on every keystroke; `Esc` or the ✕ button clears it |
 | Category filter chips | `chipRow` | 10 chips: **All** + 9 categories, each with a live doc count |
-| Result counter | `resultCount` | "Showing **n** of 34 documents in *Category* matching *query*" |
+| Result counter | `resultCount` | "Showing **n** of 28 documents in *Category* matching *query*" |
 | Card grid (1 / 2 / 3 columns) | `cardsGrid` | Cards stagger-fade in (≤ 400 ms delay) |
 | Empty state | `emptyState` | Dashed panel with icon, explanation and **Clear search & filters** button (`resetFilters`) |
 
@@ -48,17 +48,17 @@ filteredDocs() = BMCM.DOCS
 
 | Key | Label | Docs |
 |---|---|---|
-| `whitepaper` | Whitepaper & Vision | 5 |
+| `whitepaper` | Whitepaper & Vision | 2 |
 | `tokenomics` | Tokenomics & Earnings | 5 |
 | `land` | Land & Property Engines | 5 |
 | `strategy` | Strategy & Roadmap | 3 |
-| `finance` | Investment & Finance | 6 |
+| `finance` | Investment & Finance | 4 |
 | `blockchain` | Blockchain & Dev | 3 |
-| `compliance` | Compliance & Risk | 4 |
+| `compliance` | Compliance & Risk | 3 |
 | `ecosystem` | Ecosystem & Utilities | 2 |
 | `index` | Project Index | 1 |
 
-(Total: **34** — counts are computed from `BMCM.DOCS`, never hard-coded.)
+(Total: **28** — counts are computed from `BMCM.DOCS`, never hard-coded.)
 
 ## Extending
 

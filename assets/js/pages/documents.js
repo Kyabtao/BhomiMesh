@@ -1,5 +1,5 @@
 /* =========================================================
-   Page: documents.html (34-document spec suite browser)
+   Page: documents.html (28-document spec suite browser)
    Client-side search, category filter chips, card grid and
    graceful empty state.
    Depends on: data.js, partials.js, ui.js

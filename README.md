@@ -13,8 +13,8 @@ A fully working, responsive multi-page demo website — **no build step, ready t
 
 | Page | What it has |
 |---|---|
-| `index.html` | Hero, animated **KPI counters** (34 docs · 9 categories · 120+ utilities · active tasks · land target · 30.8x ROI), **10-year $BMCM price chart** (pure SVG), explore grid, 7-pillar audit summary |
-| `documents.html` | **34-document spec browser** — category tiles, live search, 9 filter chips, cards with tool badges / maturity / edition tags, graceful empty state, direct links into `HST/` |
+| `index.html` | Hero, animated **KPI counters** (28 docs · 9 categories · 120+ utilities · active tasks · land target · 30.8x ROI), **10-year $BMCM price chart** (pure SVG), explore grid, 7-pillar audit summary |
+| `documents.html` | **28-document spec browser** — category tiles, live search, 9 filter chips, cards with tool badges / maturity / edition tags, graceful empty state, direct links into `HST/` |
 | `whitepaper.html` | **70/30 landowner split calculator** — enter acres, see the live token split & TGE value |
 | `tokenomics.html` | **10-year single-token simulator** — year slider drives price, dividends, ROI + full model table |
 | `land.html` | **Land tokenization calculator** — acres → sq ft / sq cm / $BMCM tokens / ₹ value + deed-redemption & micro-fraction cards |
@@ -43,7 +43,7 @@ python3 -m http.server 8080 --bind 0.0.0.0
 
 ```
 ├── index.html            # Home / dashboard page
-├── documents.html        # Document suite browser (all 34 docs + category tiles)
+├── documents.html        # Document suite browser (all 28 docs + category tiles)
 ├── whitepaper.html       # Category page: 70/30 split calculator
 ├── tokenomics.html       # Category page: 10-year token simulator
 ├── land.html             # Category page: land tokenization calculator
@@ -57,7 +57,7 @@ python3 -m http.server 8080 --bind 0.0.0.0
 │   ├── css/site.css      # Shared custom styles
 │   └── js/
 │       ├── tailwind.config.js
-│       ├── data.js       # Single source of truth: 34 docs, roadmap, checklist, pillars,
+│       ├── data.js       # Single source of truth: 28 docs, roadmap, checklist, pillars,
 │       │                 #   10-yr table, $GR allocation, stress tests, seed, P&L, …
 │       ├── data-utilities.js  # 120 utilities (generated from HST catalog)
 │       ├── partials.js   # Shared nav (dropdown + mobile menu) / footer / toast
@@ -65,13 +65,13 @@ python3 -m http.server 8080 --bind 0.0.0.0
 │       ├── charts.js     # SVG price chart
 │       └── pages/        # home.js · documents.js · roadmap.js · categories.js (all 8
 │                         #   category pages + their widgets)
-├── docs/                 # Site documentation (one file per page + 34 spec companions)
+├── docs/                 # Site documentation (one file per page + 28 spec companions)
 │   ├── README.md         # Structure, architecture, how to extend
 │   ├── home.md · documents.md · roadmap.md
 │   ├── whitepaper.md · tokenomics.md · land.md · strategy.md
 │   ├── finance.md · blockchain.md · compliance.md · ecosystem.md
 │   └── hst/              # Markdown companion for every HST spec document
-└── HST/                  # 34 original spec documents (HTML) + Task.txt brief
+└── HST/                  # 28 original spec documents (HTML) + Task.txt brief
 ```
 
 ### Key documents

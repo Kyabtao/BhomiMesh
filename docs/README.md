@@ -8,7 +8,7 @@ reference and companion notes for every spec document in `HST/`.
 | Page | URL | Documentation |
 |---|---|---|
 | Home / Dashboard | [../index.html](../index.html) | [home.md](home.md) |
-| Documents (34-doc browser + category tiles) | [../documents.html](../documents.html) | [documents.md](documents.md) |
+| Documents (28-doc browser + category tiles) | [../documents.html](../documents.html) | [documents.md](documents.md) |
 | **Whitepaper & Vision** — 70/30 split calculator | [../whitepaper.html](../whitepaper.html) | [whitepaper.md](whitepaper.md) |
 | **Tokenomics & Earnings** — 10-year token simulator | [../tokenomics.html](../tokenomics.html) | [tokenomics.md](tokenomics.md) |
 | **Land & Property Engines** — land tokenization calculator | [../land.html](../land.html) | [land.md](land.md) |
@@ -18,7 +18,7 @@ reference and companion notes for every spec document in `HST/`.
 | **Compliance & Risk** — 12 stress-test accordions | [../compliance.html](../compliance.html) | [compliance.md](compliance.md) |
 | **Ecosystem & Utilities** — 120-utility browser | [../ecosystem.html](../ecosystem.html) | [ecosystem.md](ecosystem.md) |
 | Roadmap & tasks (live tracker) | [../roadmap.html](../roadmap.html) | [roadmap.md](roadmap.md) |
-| Spec archive (34 HTML docs) | [../HST/](../HST/) | [hst/](hst/) — one markdown companion per document |
+| Spec archive (28 HTML docs) | [../HST/](../HST/) | [hst/](hst/) — one markdown companion per document |
 
 ## File tree
 
@@ -61,16 +61,16 @@ BhomiMesh/
 │   ├── home.md · documents.md · roadmap.md     # Page docs (core pages)
 │   ├── whitepaper.md · tokenomics.md · land.md · strategy.md
 │   ├── finance.md · blockchain.md · compliance.md · ecosystem.md  # Page docs (category pages)
-│   └── hst/                    # Companion docs for all 34 HST spec documents
+│   └── hst/                    # Companion docs for all 28 HST spec documents
 │
-└── HST/                        # 34 original spec documents (HTML) + Task.txt brief
+└── HST/                        # 28 original spec documents (HTML) + Task.txt brief
 ```
 
 ## Architecture
 
 - **Static, zero-build.** No bundler, no backend, no framework. Pages are plain HTML + Tailwind
   (Play CDN) + FontAwesome 6 + vanilla JS. Deploys directly to GitHub Pages or any static host.
-- **Single data source.** All content (34 documents, 15 roadmap phases, 10 checklist tasks,
+- **Single data source.** All content (28 documents, 15 roadmap phases, 10 checklist tasks,
   7 pillars, price series) lives in `assets/js/data.js` as `window.BMCM`. Pages never hard-code
   content — they render from this object.
 - **Shared chrome.** Nav (with Categories dropdown on desktop + hamburger menu on mobile),
@@ -95,7 +95,7 @@ BhomiMesh/
 cd BhomiMesh
 python3 -m http.server 8080 --bind 0.0.0.0
 # → http://localhost:8080            (home)
-# → http://localhost:8080/documents.html   (all 34 docs)
+# → http://localhost:8080/documents.html   (all 28 docs)
 # → http://localhost:8080/whitepaper.html · tokenomics.html · land.html ·
 #     strategy.html · finance.html · blockchain.html · compliance.html · ecosystem.html
 # → http://localhost:8080/roadmap.html

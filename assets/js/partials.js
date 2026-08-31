@@ -55,7 +55,7 @@
             <div class="w-64 rounded-xl border border-slate-800 bg-slate-900 p-2 shadow-2xl shadow-slate-950">
               <a href="documents.html" class="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-slate-200 transition hover:bg-slate-800">
                 <span class="flex items-center gap-2.5"><i class="fa-solid fa-border-all w-4 text-slate-400"></i>All Documents</span>
-                <span class="rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-slate-400">34</span>
+                <span class="rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-slate-400">${window.BMCM.DOCS.length}</span>
               </a>
               <div class="mx-3 my-1.5 border-t border-slate-800"></div>
               ${CATS_NAV.map(c => `
@@ -106,7 +106,7 @@
         <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400">Site Pages</h4>
         <ul class="mt-3 space-y-2 text-sm text-slate-500">
           <li><a href="index.html" class="hover:text-emerald-300">Home — Overview, KPIs &amp; Economics</a></li>
-          <li><a href="documents.html" class="hover:text-emerald-300">Documents — 34 spec suite browser</a></li>
+          <li><a href="documents.html" class="hover:text-emerald-300">Documents — ${window.BMCM.DOCS.length} spec suite browser</a></li>
           <li><a href="roadmap.html" class="hover:text-emerald-300">Roadmap — Milestones &amp; tasks</a></li>
           <li><a href="docs/README.md" class="hover:text-emerald-300">Docs — Site documentation</a></li>
         </ul>

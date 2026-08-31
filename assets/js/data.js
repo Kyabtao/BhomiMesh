@@ -1,6 +1,6 @@
 /* =========================================================
    BhoomiMesh site — data module (window.BMCM)
-   All structured data extracted from the 34 spec documents
+   All structured data extracted from the 28 spec documents
    in HST/. Every page reads from this single source.
    ========================================================= */
 'use strict';
@@ -37,25 +37,16 @@
     Standard: 'border-slate-600 text-slate-400'
   };
 
-  /* ---------- 34 spec documents ----------
+  /* ---------- 28 spec documents ----------
      t: title · f: file inside HST/ · c: category · m: maturity · l: level
      ed: edition badge (optional) · d: description · b: tool badges */
   const DOCS = [
     { t: 'Grand Master Whitepaper', f: 'BhoomiMesh_BMCM_Grand_Master_Whitepaper.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core',
       d: 'Flagship institutional whitepaper — the 12 core equations, the 70/30 landowner lease program, the sinking-reserve protocol and multi-tier land acquisition analysis across India.',
       b: ['RWA', '₹ INR', '12 Equations', '70/30'] },
-    { t: 'Grand Master Whitepaper', f: 'BhoomiMesh_BMCM_Grand_Master_Whitepaper 3.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core', ed: 'v3',
-      d: 'GrinRex-minted edition of the grand master spec — brand narrative, global competitive scorecard and supply-conversion metrics on the sovereign L1.',
-      b: ['RWA', 'GrinRex L1', 'Scorecard'] },
     { t: 'Institutional Whitepaper', f: 'BhoomiMesh_BMCM_Complete_Institutional_Whitepaper.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core',
       d: 'Complete institutional specification & multi-token whitepaper — brand story, token unit standard, 70/30 mechanics and 30-year lease-expiry safeguards.',
       b: ['RWA', 'Multi-Token', '70/30'] },
-    { t: 'Institutional Whitepaper', f: 'BhoomiMesh_BMCM_Complete_Institutional_Whitepaper 2.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core', ed: 'v2',
-      d: 'Rupees edition with global competitive analysis, a numerical scorecard and 5-year pro-forma financial projections for the protocol.',
-      b: ['₹ INR', '5-Yr Pro-Forma'] },
-    { t: 'Institutional Whitepaper', f: 'BhoomiMesh_BMCM_Complete_Institutional_Whitepaper 3.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core', ed: 'v3',
-      d: 'Rupees edition deepening the 30-year landowner lease tokenization program, with the full rule set and mechanics of the 70/30 split.',
-      b: ['₹ INR', 'Lease Program'] },
 
     { t: 'Single Token 10-Year Price Chart', f: 'Single_Token_Price_Calculation_Chart.html', c: 'tokenomics', m: 'Financial Model', l: 'Core',
       d: 'Step-by-step 10-year lifecycle of one $BMCM token — ₹0.247 entry, annual cash dividends, ₹7.628 Year-10 exit (30.8x) with three exit options.',
@@ -102,9 +93,6 @@
     { t: 'Investor Deck', f: 'BhoomiMesh_BMCM_Investor_Deck.html', c: 'finance', m: 'Investor Grade', l: 'Core',
       d: 'Seed round memorandum — the ₹12.50 Cr raise at ₹0.160, the ₹235 Lakh Cr opportunity, 5-year investor returns model and use of seed capital.',
       b: ['Seed ₹12.5 Cr', '5-Yr Model'] },
-    { t: 'Investor Deck', f: 'BhoomiMesh_BMCM_Investor_Deck 2.html', c: 'finance', m: 'Investor Grade', l: 'Core', ed: 'v2',
-      d: 'Updated Rupees-edition investor deck with refreshed offering terms and the competitive-moat analysis vs all RWA alternatives.',
-      b: ['Seed ₹12.5 Cr', 'Moat'] },
     { t: 'Complete Investor Deck & Master Document', f: 'BhoomiMesh_Complete_Investor_Deck_And_Full_Project_Master_Document.html', c: 'finance', m: 'Investor Grade', l: 'Core',
       d: 'Combined grand-master deck and full project document — offering terms, 10-year pro-forma portfolio simulation and the single-token lifecycle.',
       b: ['10-Yr Pro-Forma', 'Master Doc'] },
@@ -114,9 +102,6 @@
     { t: 'Market Feasibility & Profitability', f: 'BhoomiMesh_Market_Feasibility_And_Profitability_Analysis.html', c: 'finance', m: 'Financial Model', l: 'Advanced',
       d: 'Real-world Indian demand validation across 3 stakeholder groups, monthly SPV OpEx, EBITDA break-even at 12 acres, CAC vs LTV and bear stress tests.',
       b: ['OpEx', 'CAC / LTV', 'Bear Tests'] },
-    { t: 'Market Feasibility & Profitability', f: 'BhoomiMesh_Market_Feasibility_And_Profitability_Analysis 2.html', c: 'finance', m: 'Financial Model', l: 'Advanced', ed: 'v2',
-      d: 'Updated feasibility analysis with revised unit economics and refreshed bear-market sensitivity scenarios for the SPV operation.',
-      b: ['OpEx', 'Sensitivity'] },
 
     { t: 'GrinChain L1 Blockchain Architecture', f: 'GrinChain_L1_Blockchain_Architecture.html', c: 'blockchain', m: 'Production Spec', l: 'Core',
       d: 'Sovereign RWA Layer-1 architecture — the dual-asset $GR economy (gas vs land token), EVM compatibility, consensus-KYC node specs and teleport bridges.',
@@ -131,9 +116,6 @@
     { t: '12 “What If?” Scenario Stress Tests', f: 'BhoomiMesh_What_If_Scenario_Stress_Tests.html', c: 'compliance', m: 'Audit Verified', l: 'Advanced',
       d: 'Twelve black-swan scenarios — VDA tax shocks, re-zoning, title disputes, tenant defaults, hard forks, lost keys, whale takeovers — each with mitigations.',
       b: ['12 Scenarios', 'Risk Matrix'] },
-    { t: '12 “What If?” Scenario Stress Tests', f: 'BhoomiMesh_What_If_Scenario_Stress_Tests 2.html', c: 'compliance', m: 'Audit Verified', l: 'Advanced', ed: 'v2',
-      d: 'Updated stress-test suite with revised probability/impact scoring and refreshed mitigation playbooks for every black-swan scenario.',
-      b: ['12 Scenarios', 'Updated'] },
     { t: 'Single-Tier Referral & Compliance Guide', f: 'BhoomiMesh_Single_Tier_Referral_And_Compliance_Guide.html', c: 'compliance', m: 'Audit Verified', l: 'Standard',
       d: 'The single-tier (1-level) referral architecture benchmarked against multi-level marketing, plus three fully compliant community growth programs.',
       b: ['1-Tier', 'Anti-MLM'] },

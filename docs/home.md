@@ -13,7 +13,7 @@ summary.
 |---|---|---|---|
 | 1 | **Nav** (sticky) — brand, page links, last-synced stamp, Sync button | `siteNav`, `syncBtn`, `lastSync` | `partials.js` (injected) |
 | 2 | **Hero** — badge, headline, protocol summary, CTA buttons (→ documents / roadmap), protocol-fact chips, 4 supply/pricing stat tiles | — | static HTML |
-| 3 | **KPI cards** (6, animated count-up) — 34 docs · 9 categories · 120+ utilities · 8 active tasks · 50-acre M12 land target · 30.8x ROI | `kpiGrid`, `.kpi-num[data-target]` | `ui.js` → `animateKPIs()` |
+| 3 | **KPI cards** (6, animated count-up) — 28 docs · 9 categories · 120+ utilities · 8 active tasks · 50-acre M12 land target · 30.8x ROI | `kpiGrid`, `.kpi-num[data-target]` | `ui.js` → `animateKPIs()` |
 | 4 | **Token economics** — single-token 10-year lifecycle copy, 3 exit-stat tiles, SVG price chart | `priceChart` | `charts.js` → `buildPriceChart()` |
 | 5 | **Page shortcuts** — two link cards to `documents.html` and `roadmap.html` | — | static HTML |
 | 6 | **7 Core Pillars** — audit-pillar cards + final audit result banner | `pillarGrid` | `pages/home.js` → `renderPillars()` |
@@ -29,7 +29,7 @@ summary.
   points (`<title>` tooltips per year), gold labels at Y0 / Y3 / Y5 / Y10. Data: `BMCM.PRICE`
   (11 points from `Single_Token_Price_Calculation_Chart.html`).
 - **Sync button (mock):** spinner + "Syncing…" for 1.1 s → KPI grid flashes, nav shows
-  "Synced HH:MM:SS", toast reports `34 documents re-verified · 25 tasks reconciled · 8 active`,
+  "Synced HH:MM:SS", toast reports `28 documents re-verified · 25 tasks reconciled · 8 active`,
   then dispatches a `bmcm:synced` DOM event (home re-flashes the KPI grid).
 - **Pillars:** 7 cards rendered from `BMCM.PILLARS`, each stamped *Verified*.
 

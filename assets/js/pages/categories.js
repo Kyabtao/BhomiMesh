@@ -44,7 +44,7 @@
       </div>`).join('');
 
     const docs = DOCS.filter(d => d.c === cat);
-    document.getElementById('catCount').textContent = docs.length + ' of 34 suite documents';
+    document.getElementById('catCount').textContent = docs.length + ' of ' + window.BMCM.DOCS.length + ' suite documents';
     document.getElementById('catCards').innerHTML = docs.map(window.BMCM_UI.docCardHTML).join('');
 
     /* prev / next pager */
