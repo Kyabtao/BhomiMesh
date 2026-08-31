@@ -9,7 +9,7 @@
 A fully working, responsive multi-page demo website — **no build step, ready to deploy as-is**
 (e.g. GitHub Pages). Dark slate theme, Tailwind CSS (CDN), FontAwesome 6, pure vanilla JavaScript.
 
-### Pages (11 total)
+### Pages (11 + 404 dead-end)
 
 | Page | What it has |
 |---|---|
@@ -24,6 +24,7 @@ A fully working, responsive multi-page demo website — **no build step, ready t
 | `compliance.html` | **12 stress-test accordions** grouped in 6 risk categories, each with its architectural solution |
 | `ecosystem.html` | **120-utility browser** — 12 sector tabs + keyword search + 8 sub-token strip |
 | `roadmap.html` | **Live milestone & task schedule** — tabbed 24-month roadmap (15 phases) + TGE pre-launch checklist (10 tasks), status badges, status filters, progress bar |
+| `404.html` | **404 dead-end page** — brand nav + recovery links to Home / Documents / Roadmap, zero JS dependency |
 
 Every page shares a sticky nav (Categories dropdown on desktop, hamburger menu on mobile) with
 the brand and a **manual sync/refresh button** (mock sync with toast + "last synced" stamp).
@@ -53,6 +54,7 @@ python3 -m http.server 8080 --bind 0.0.0.0
 ├── compliance.html       # Category page: 12 stress-test accordions
 ├── ecosystem.html        # Category page: 120-utility browser
 ├── roadmap.html          # Milestones & task schedule page
+├── 404.html              # 404 dead-end page (no JS dependency)
 ├── assets/
 │   ├── css/site.css      # Shared custom styles
 │   └── js/

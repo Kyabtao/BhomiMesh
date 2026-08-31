@@ -18,6 +18,7 @@ reference and companion notes for every spec document in `HST/`.
 | **Compliance & Risk** — 12 stress-test accordions | [../compliance.html](../compliance.html) | [compliance.md](compliance.md) |
 | **Ecosystem & Utilities** — 120-utility browser | [../ecosystem.html](../ecosystem.html) | [ecosystem.md](ecosystem.md) |
 | Roadmap & tasks (live tracker) | [../roadmap.html](../roadmap.html) | [roadmap.md](roadmap.md) |
+| 404 dead-end page | [../404.html](../404.html) | [404.md](404.md) |
 | Spec archive (28 HTML docs) | [../HST/](../HST/) | [hst/](hst/) — one markdown companion per document |
 
 ## File tree
@@ -35,6 +36,7 @@ BhomiMesh/
 ├── compliance.html             # Page 9 — Category: 12 stress-test accordions
 ├── ecosystem.html              # Page 10 — Category: 120-utility browser
 ├── roadmap.html                # Page 11 — Milestones & task schedule (tabs + status board)
+├── 404.html                    # Dead-end page (works with zero JS)
 ├── README.md                   # Repository readme
 │
 ├── assets/

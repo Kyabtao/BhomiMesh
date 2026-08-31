@@ -73,7 +73,7 @@
         <button id="syncBtn" class="flex items-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-3.5 py-2 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
           <i id="syncIcon" class="fa-solid fa-rotate text-xs"></i><span id="syncLabel">Sync Docs</span>
         </button>
-        <button id="menuBtn" class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition hover:text-white lg:hidden" aria-label="Open menu">
+        <button id="menuBtn" class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition hover:text-white lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
@@ -149,6 +149,7 @@
       menuBtn.addEventListener('click', () => {
         const menu = document.getElementById('mobileMenu');
         menu.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
         menuBtn.firstElementChild.className =
           menu.classList.contains('hidden') ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
       });
