@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Unified Master Token Model for Residential Flats & Houses
 
-> **Source:** [Unified_BMCM_Residential_Flat_Tokenization_Engine.html](HST/Unified_BMCM_Residential_Flat_Tokenization_Engine.html) · **Category:** Land & Property Engines · **Maturity:** Production Spec · **Level:** Standard
+> **Source:** [Unified_BMCM_Residential_Flat_Tokenization_Engine.html](../../doc.html?d=Unified_BMCM_Residential_Flat_Tokenization_Engine.html) · **Category:** Land & Property Engines · **Maturity:** Production Spec · **Level:** Standard
 
 
 One master token for everything — the unified $BMCM residential tokenization flow plus 8 new high-yield residential utilities (#121–128).

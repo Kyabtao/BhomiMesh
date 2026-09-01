@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Dividend Distribution Protocol & Portfolio Scenarios Guide
 
-> **Source:** [Dividend_Distribution_And_Portfolio_Scenarios_Guide.html](HST/Dividend_Distribution_And_Portfolio_Scenarios_Guide.html) · **Category:** Tokenomics & Earnings · **Maturity:** Financial Model · **Level:** Standard
+> **Source:** [Dividend_Distribution_And_Portfolio_Scenarios_Guide.html](../../doc.html?d=Dividend_Distribution_And_Portfolio_Scenarios_Guide.html) · **Category:** Tokenomics & Earnings · **Maturity:** Financial Model · **Level:** Standard
 
 
 Four portfolio scenarios: mixed leased/vacant land, the treasury 30% dividend policy, freehold vs leasehold, and staked vs unstaked yield boosters.

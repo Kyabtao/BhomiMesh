@@ -27,5 +27,5 @@ Category page for the 2 ecosystem documents. Hosts the **120-utility browser**:
 ## Data provenance
 
 `assets/js/data-utilities.js` is **generated** from
-`HST/BhoomiMesh_100_Plus_Utilities_Master_List.html` (12 sectors × 10 = 120 utilities,
+[`BhoomiMesh_100_Plus_Utilities_Master_List.html`](../doc.html?d=BhoomiMesh_100_Plus_Utilities_Master_List.html) (12 sectors × 10 = 120 utilities,
 name + description each). Regenerate with the extraction script if the source doc changes.

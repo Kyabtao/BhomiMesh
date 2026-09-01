@@ -1,6 +1,6 @@
 # BhoomiMesh & GrinRex - Corporate Revenue, Monetization & Profitability Model
 
-> **Source:** [Company_Revenue_And_Profitability_Model.html](HST/Company_Revenue_And_Profitability_Model.html) · **Category:** Investment & Finance · **Maturity:** Financial Model · **Level:** Core
+> **Source:** [Company_Revenue_And_Profitability_Model.html](../../doc.html?d=Company_Revenue_And_Profitability_Model.html) · **Category:** Investment & Finance · **Maturity:** Financial Model · **Level:** Core
 
 
 Five corporate revenue streams — SPV administration fee (10–15%), blockchain fees, royalties and treasury appreciation — in a 5-year P&L (₹ Cr).

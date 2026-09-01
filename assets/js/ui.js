@@ -12,8 +12,8 @@
 
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-  /** Relative link into the HST archive (space-safe). */
-  const href = f => 'HST/' + f.split('/').map(encodeURIComponent).join('/');
+  /** Link into the unified document viewer (query-string driven). */
+  const href = f => 'doc.html?d=' + encodeURIComponent(f);
 
   /* ---------- Toast ---------- */
   let toastTimer = null;
@@ -49,7 +49,7 @@
           <span class="flex items-center gap-1.5 ${mat.cls}"><span class="h-1.5 w-1.5 rounded-full ${mat.dot}"></span>${esc(d.m)}</span>
           <span class="rounded-md border px-1.5 py-0.5 text-[10px] font-bold ${LEVEL[d.l]}">${esc(d.l)}</span>
         </span>
-        <a href="${href(d.f)}" target="_blank" rel="noopener" class="font-bold text-emerald-300 transition hover:text-emerald-200">Open Spec <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+        <a href="${href(d.f)}" class="font-bold text-emerald-300 transition hover:text-emerald-200">Open Spec <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
       </div>
     </article>`;
   }
@@ -98,7 +98,7 @@
         const ls = $('#lastSync');
         if (ls) ls.textContent = 'Synced ' + stamp;
         const note = $('#docSyncNote');
-        if (note) note.textContent = 're-verified ' + stamp + ' from HST/ archive';
+        if (note) note.textContent = 're-verified ' + stamp + ' from embedded spec archive';
 
         icon.className = 'fa-solid fa-circle-check text-xs';
         label.textContent = 'Synced';

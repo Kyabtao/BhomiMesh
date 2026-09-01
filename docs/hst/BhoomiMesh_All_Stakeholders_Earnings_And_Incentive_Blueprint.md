@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) & GrinRex ($GR) - All-Stakeholders Earnings & Value Creation Blueprint
 
-> **Source:** [BhoomiMesh_All_Stakeholders_Earnings_And_Incentive_Blueprint.html](HST/BhoomiMesh_All_Stakeholders_Earnings_And_Incentive_Blueprint.html) · **Category:** Tokenomics & Earnings · **Maturity:** Financial Model · **Level:** Core
+> **Source:** [BhoomiMesh_All_Stakeholders_Earnings_And_Incentive_Blueprint.html](../../doc.html?d=BhoomiMesh_All_Stakeholders_Earnings_And_Incentive_Blueprint.html) · **Category:** Tokenomics & Earnings · **Maturity:** Financial Model · **Level:** Core
 
 
 Positive-sum value engine — detailed earning methods and the master incentive matrix for landowners, investors, SPV, validators, DePIN and AI agents.

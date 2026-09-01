@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - 12 High-Impact "What If?" Scenario Stress Tests
 
-> **Source:** [BhoomiMesh_What_If_Scenario_Stress_Tests.html](HST/BhoomiMesh_What_If_Scenario_Stress_Tests.html) · **Category:** Compliance & Risk · **Maturity:** Audit Verified · **Level:** Advanced
+> **Source:** [BhoomiMesh_What_If_Scenario_Stress_Tests.html](../../doc.html?d=BhoomiMesh_What_If_Scenario_Stress_Tests.html) · **Category:** Compliance & Risk · **Maturity:** Audit Verified · **Level:** Advanced
 
 
 Twelve black-swan scenarios — VDA tax shocks, re-zoning, title disputes, tenant defaults, hard forks, lost keys, whale takeovers — each with mitigations.

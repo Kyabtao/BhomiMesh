@@ -26,8 +26,8 @@ value  = tokens × ₹0.247
 
 ## Source documents
 
-- `HST/Valuation_Weighted_Land_Lease_Tokenization_Engine.html`
-- `HST/Agricultural_Land_Monetization_And_Compliance_Engine.html`
-- `HST/Residential_Flats_And_Housing_Tokenization_Engine.html` ($SMART-HOMES)
-- `HST/Residential_Flat_Token_Calculations_And_Utilities_Guide.html`
-- `HST/Unified_BMCM_Residential_Flat_Tokenization_Engine.html`
+- [`Valuation_Weighted_Land_Lease_Tokenization_Engine.html`](../doc.html?d=Valuation_Weighted_Land_Lease_Tokenization_Engine.html)
+- [`Agricultural_Land_Monetization_And_Compliance_Engine.html`](../doc.html?d=Agricultural_Land_Monetization_And_Compliance_Engine.html)
+- [`Residential_Flats_And_Housing_Tokenization_Engine.html`](../doc.html?d=Residential_Flats_And_Housing_Tokenization_Engine.html) ($SMART-HOMES)
+- [`Residential_Flat_Token_Calculations_And_Utilities_Guide.html`](../doc.html?d=Residential_Flat_Token_Calculations_And_Utilities_Guide.html)
+- [`Unified_BMCM_Residential_Flat_Tokenization_Engine.html`](../doc.html?d=Unified_BMCM_Residential_Flat_Tokenization_Engine.html)

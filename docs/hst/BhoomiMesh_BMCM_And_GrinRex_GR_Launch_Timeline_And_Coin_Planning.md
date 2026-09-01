@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) & GrinRex ($GR) - Coin Planning & 24-Month Master Roadmap
 
-> **Source:** [BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html](HST/BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html) · **Category:** Strategy & Roadmap · **Maturity:** Execution Plan · **Level:** Core
+> **Source:** [BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html](../../doc.html?d=BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html) · **Category:** Strategy & Roadmap · **Maturity:** Execution Plan · **Level:** Core
 
 
 $GR native coin plan (1B supply allocation & vesting), the six-phase 24-month master execution roadmap and the 10-point TGE pre-launch checklist.

@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Real-World Market Feasibility, Unit Economics & Profitability Analysis
 
-> **Source:** [BhoomiMesh_Market_Feasibility_And_Profitability_Analysis.html](HST/BhoomiMesh_Market_Feasibility_And_Profitability_Analysis.html) · **Category:** Investment & Finance · **Maturity:** Financial Model · **Level:** Advanced
+> **Source:** [BhoomiMesh_Market_Feasibility_And_Profitability_Analysis.html](../../doc.html?d=BhoomiMesh_Market_Feasibility_And_Profitability_Analysis.html) · **Category:** Investment & Finance · **Maturity:** Financial Model · **Level:** Advanced
 
 
 Real-world Indian demand validation across 3 stakeholder groups, monthly SPV OpEx, EBITDA break-even at 12 acres, CAC vs LTV and bear stress tests.

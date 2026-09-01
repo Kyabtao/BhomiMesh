@@ -21,6 +21,6 @@ Category page for the 3 strategy documents. Hosts a **3-tab execution explainer*
 
 ## Data provenance
 
-- `BMCM.PHASES` ← `HST/BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html` (6 phase boxes)
-- `BMCM.BOOTSTRAP_MONTHS` / `BMCM.BOOTSTRAP_COMPARE` ← `HST/1_Acre_Lean_Bootstrap_Plan.html` (month table + comparison table)
-- Freehold card ← `HST/Freehold_First_3_Year_Strategy_Plan.html` (headings/structure; qualitative only)
+- `BMCM.PHASES` ← [`BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html`](../doc.html?d=BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html) (6 phase boxes)
+- `BMCM.BOOTSTRAP_MONTHS` / `BMCM.BOOTSTRAP_COMPARE` ← [`1_Acre_Lean_Bootstrap_Plan.html`](../doc.html?d=1_Acre_Lean_Bootstrap_Plan.html) (month table + comparison table)
+- Freehold card ← [`Freehold_First_3_Year_Strategy_Plan.html`](../doc.html?d=Freehold_First_3_Year_Strategy_Plan.html) (headings/structure; qualitative only)

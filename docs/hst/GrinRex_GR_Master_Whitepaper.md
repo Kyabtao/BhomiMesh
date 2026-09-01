@@ -1,6 +1,6 @@
 # GrinRex ($GR) - Master Institutional Specification & Multi-Token Whitepaper
 
-> **Source:** [GrinRex_GR_Master_Whitepaper.html](HST/GrinRex_GR_Master_Whitepaper.html) · **Category:** Blockchain & Dev · **Maturity:** Audit Verified · **Level:** Core
+> **Source:** [GrinRex_GR_Master_Whitepaper.html](../../doc.html?d=GrinRex_GR_Master_Whitepaper.html) · **Category:** Blockchain & Dev · **Maturity:** Audit Verified · **Level:** Core
 
 
 Institutional whitepaper for the native gas coin — brand narrative, token unit standard, competitive scorecard, pro-forma and the “cons-free” risk matrix.

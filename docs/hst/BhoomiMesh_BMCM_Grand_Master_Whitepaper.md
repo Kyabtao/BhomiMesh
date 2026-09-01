@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Grand Master Institutional Specification & Mathematical Whitepaper
 
-> **Source:** [BhoomiMesh_BMCM_Grand_Master_Whitepaper.html](HST/BhoomiMesh_BMCM_Grand_Master_Whitepaper.html) · **Category:** Whitepaper & Vision · **Maturity:** Audit Verified · **Level:** Core
+> **Source:** [BhoomiMesh_BMCM_Grand_Master_Whitepaper.html](../../doc.html?d=BhoomiMesh_BMCM_Grand_Master_Whitepaper.html) · **Category:** Whitepaper & Vision · **Maturity:** Audit Verified · **Level:** Core
 
 
 Flagship institutional whitepaper — the 12 core equations, the 70/30 landowner lease program, the sinking-reserve protocol and multi-tier land acquisition analysis across India.

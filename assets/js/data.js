@@ -1,7 +1,8 @@
 /* =========================================================
    BhoomiMesh site — data module (window.BMCM)
    All structured data extracted from the 28 spec documents
-   in HST/. Every page reads from this single source.
+   (now embedded in the site via data-docs.js).
+   Every page reads from this single source.
    ========================================================= */
 'use strict';
 
@@ -38,7 +39,8 @@
   };
 
   /* ---------- 28 spec documents ----------
-     t: title · f: file inside HST/ · c: category · m: maturity · l: level
+     t: title · f: key used in data-docs.js (filename of original spec)
+     c: category · m: maturity · l: level
      ed: edition badge (optional) · d: description · b: tool badges */
   const DOCS = [
     { t: 'Grand Master Whitepaper', f: 'BhoomiMesh_BMCM_Grand_Master_Whitepaper.html', c: 'whitepaper', m: 'Audit Verified', l: 'Core',

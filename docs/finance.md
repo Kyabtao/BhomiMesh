@@ -20,7 +20,7 @@ Seed offering · Corporate P&L (5-yr) · Investor model (5-yr).
 
 ## Data provenance
 
-- `BMCM.SEED` ← `HST/BhoomiMesh_BMCM_Investor_Deck.html` (offering terms + use-of-funds diagram)
-- `BMCM.P5Y` ← `HST/Company_Revenue_And_Profitability_Model.html` (5-year P&L table)
-- `BMCM.INVESTOR_PROFORMA` ← `HST/BhoomiMesh_BMCM_Investor_Deck.html` (5-year returns table)
+- `BMCM.SEED` ← [`BhoomiMesh_BMCM_Investor_Deck.html`](../doc.html?d=BhoomiMesh_BMCM_Investor_Deck.html) (offering terms + use-of-funds diagram)
+- `BMCM.P5Y` ← [`Company_Revenue_And_Profitability_Model.html`](../doc.html?d=Company_Revenue_And_Profitability_Model.html) (5-year P&L table)
+- `BMCM.INVESTOR_PROFORMA` ← [`BhoomiMesh_BMCM_Investor_Deck.html`](../doc.html?d=BhoomiMesh_BMCM_Investor_Deck.html) (5-year returns table)
 - Revenue stream list `BMCM.REVENUE_STREAMS` (used in page facts / docs) ← Company Revenue Model

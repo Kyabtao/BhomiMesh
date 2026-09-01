@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Agricultural Farmland Monetization & Compliance Engine
 
-> **Source:** [Agricultural_Land_Monetization_And_Compliance_Engine.html](HST/Agricultural_Land_Monetization_And_Compliance_Engine.html) · **Category:** Land & Property Engines · **Maturity:** Production Spec · **Level:** Advanced
+> **Source:** [Agricultural_Land_Monetization_And_Compliance_Engine.html](../../doc.html?d=Agricultural_Land_Monetization_And_Compliance_Engine.html) · **Category:** Land & Property Engines · **Maturity:** Production Spec · **Level:** Advanced
 
 
 Five legal, high-yield farmland monetization streams with full compliance mapping, plus a traditional-vs-BhoomiMesh farmland yield comparison.

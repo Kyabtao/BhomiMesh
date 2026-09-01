@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) & GrinRex ($GR) - Complete Grand Master Investor Deck & Project Document
 
-> **Source:** [BhoomiMesh_Complete_Investor_Deck_And_Full_Project_Master_Document.html](HST/BhoomiMesh_Complete_Investor_Deck_And_Full_Project_Master_Document.html) · **Category:** Investment & Finance · **Maturity:** Investor Grade · **Level:** Core
+> **Source:** [BhoomiMesh_Complete_Investor_Deck_And_Full_Project_Master_Document.html](../../doc.html?d=BhoomiMesh_Complete_Investor_Deck_And_Full_Project_Master_Document.html) · **Category:** Investment & Finance · **Maturity:** Investor Grade · **Level:** Core
 
 
 Combined grand-master deck and full project document — offering terms, 10-year pro-forma portfolio simulation and the single-token lifecycle.

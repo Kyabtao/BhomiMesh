@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - 1-Acre Lean Bootstrapping & Organic Expansion Plan
 
-> **Source:** [1_Acre_Lean_Bootstrap_Plan.html](HST/1_Acre_Lean_Bootstrap_Plan.html) · **Category:** Strategy & Roadmap · **Maturity:** Execution Plan · **Level:** Standard
+> **Source:** [1_Acre_Lean_Bootstrap_Plan.html](../../doc.html?d=1_Acre_Lean_Bootstrap_Plan.html) · **Category:** Strategy & Roadmap · **Maturity:** Execution Plan · **Level:** Standard
 
 
 Zero-capex launch from a single acre: the month-by-month Year-1 execution timeline and the viral organic path to a 10-acre land reserve.

@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Institutional Investment Memorandum (Rupees Edition)
 
-> **Source:** [BhoomiMesh_BMCM_Investor_Deck.html](HST/BhoomiMesh_BMCM_Investor_Deck.html) · **Category:** Investment & Finance · **Maturity:** Investor Grade · **Level:** Core
+> **Source:** [BhoomiMesh_BMCM_Investor_Deck.html](../../doc.html?d=BhoomiMesh_BMCM_Investor_Deck.html) · **Category:** Investment & Finance · **Maturity:** Investor Grade · **Level:** Core
 
 
 Seed round memorandum — the ₹12.50 Cr raise at ₹0.160, the ₹235 Lakh Cr opportunity, 5-year investor returns model and use of seed capital.

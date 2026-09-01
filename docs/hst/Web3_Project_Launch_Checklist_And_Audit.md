@@ -1,6 +1,6 @@
 # Web3 & RWA Project Launch Checklist: Complete Document & Audit Report
 
-> **Source:** [Web3_Project_Launch_Checklist_And_Audit.html](HST/Web3_Project_Launch_Checklist_And_Audit.html) · **Category:** Compliance & Risk · **Maturity:** Audit Report · **Level:** Core
+> **Source:** [Web3_Project_Launch_Checklist_And_Audit.html](../../doc.html?d=Web3_Project_Launch_Checklist_And_Audit.html) · **Category:** Compliance & Risk · **Maturity:** Audit Report · **Level:** Core
 
 
 The 7-pillar documentation standard for Web3/RWA launches with the 14/14 verification audit matrix — 100% complete, zero missing items.

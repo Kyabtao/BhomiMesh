@@ -24,6 +24,6 @@ pure native HTML — no JS state — so it works with scripts disabled.
 
 ## Data provenance
 
-- `BMCM.STRESS_TESTS` (12 items, categories A–F) ← `HST/BhoomiMesh_What_If_Scenario_Stress_Tests.html`
-- Referral card ← `HST/BhoomiMesh_Single_Tier_Referral_And_Compliance_Guide.html`
-- Audit card ← `HST/Web3_Project_Launch_Checklist_And_Audit.html`
+- `BMCM.STRESS_TESTS` (12 items, categories A–F) ← [`BhoomiMesh_What_If_Scenario_Stress_Tests.html`](../doc.html?d=BhoomiMesh_What_If_Scenario_Stress_Tests.html)
+- Referral card ← [`BhoomiMesh_Single_Tier_Referral_And_Compliance_Guide.html`](../doc.html?d=BhoomiMesh_Single_Tier_Referral_And_Compliance_Guide.html)
+- Audit card ← [`Web3_Project_Launch_Checklist_And_Audit.html`](../doc.html?d=Web3_Project_Launch_Checklist_And_Audit.html)

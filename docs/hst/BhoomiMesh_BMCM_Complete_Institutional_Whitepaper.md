@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Master Institutional Specification & Multi-Token Whitepaper (Rupees Edition)
 
-> **Source:** [BhoomiMesh_BMCM_Complete_Institutional_Whitepaper.html](HST/BhoomiMesh_BMCM_Complete_Institutional_Whitepaper.html) · **Category:** Whitepaper & Vision · **Maturity:** Audit Verified · **Level:** Core
+> **Source:** [BhoomiMesh_BMCM_Complete_Institutional_Whitepaper.html](../../doc.html?d=BhoomiMesh_BMCM_Complete_Institutional_Whitepaper.html) · **Category:** Whitepaper & Vision · **Maturity:** Audit Verified · **Level:** Core
 
 
 Complete institutional specification & multi-token whitepaper — brand story, token unit standard, 70/30 mechanics and 30-year lease-expiry safeguards.

@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Single Token 10-Year Price Calculation & Chart
 
-> **Source:** [Single_Token_Price_Calculation_Chart.html](HST/Single_Token_Price_Calculation_Chart.html) · **Category:** Tokenomics & Earnings · **Maturity:** Financial Model · **Level:** Core
+> **Source:** [Single_Token_Price_Calculation_Chart.html](../../doc.html?d=Single_Token_Price_Calculation_Chart.html) · **Category:** Tokenomics & Earnings · **Maturity:** Financial Model · **Level:** Core
 
 
 Step-by-step 10-year lifecycle of one $BMCM token — ₹0.247 entry, annual cash dividends, ₹7.628 Year-10 exit (30.8x) with three exit options.
