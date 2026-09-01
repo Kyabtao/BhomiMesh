@@ -1,7 +1,6 @@
 /* =========================================================
    BhoomiMesh site — data module: protocol utilities
-   Generated from HST/BhoomiMesh_100_Plus_Utilities_Master_List.html
-   12 sectors × 10 utilities = 120 total.
+   12 sectors × 10 utilities = 120 total (from the 120+ Utilities catalog).
    ========================================================= */
 'use strict';
 

@@ -8,13 +8,15 @@
 
 A fully working, responsive multi-page demo website — **no build step, ready to deploy as-is**
 (e.g. GitHub Pages). Dark slate theme, Tailwind CSS (CDN), FontAwesome 6, pure vanilla JavaScript.
+All 28 spec documents are now embedded directly into the site (no separate folder of old HTML files).
 
-### Pages (11 + 404 dead-end)
+### Pages (12 + 404 dead-end)
 
 | Page | What it has |
 |---|---|
 | `index.html` | Hero, animated **KPI counters** (28 docs · 9 categories · 120+ utilities · active tasks · land target · 30.8x ROI), **10-year $BMCM price chart** (pure SVG), explore grid, 7-pillar audit summary |
-| `documents.html` | **28-document spec browser** — category tiles, live search, 9 filter chips, cards with tool badges / maturity / edition tags, graceful empty state, direct links into `HST/` |
+| `documents.html` | **28-document spec browser** — category tiles, live search, 9 filter chips, cards with tool badges / maturity / edition tags, graceful empty state |
+| `doc.html` | **Unified document viewer** — renders any of the 28 spec documents inside the site chrome with prev/next pager and jump-to dropdown. `?d=<filename>` selects the doc |
 | `whitepaper.html` | **70/30 landowner split calculator** — enter acres, see the live token split & TGE value |
 | `tokenomics.html` | **10-year single-token simulator** — year slider drives price, dividends, ROI + full model table |
 | `land.html` | **Land tokenization calculator** — acres → sq ft / sq cm / $BMCM tokens / ₹ value + deed-redemption & micro-fraction cards |
@@ -45,6 +47,7 @@ python3 -m http.server 8080 --bind 0.0.0.0
 ```
 ├── index.html            # Home / dashboard page
 ├── documents.html        # Document suite browser (all 28 docs + category tiles)
+├── doc.html              # Unified viewer (renders any spec via ?d= query)
 ├── whitepaper.html       # Category page: 70/30 split calculator
 ├── tokenomics.html       # Category page: 10-year token simulator
 ├── land.html             # Category page: land tokenization calculator
@@ -59,30 +62,30 @@ python3 -m http.server 8080 --bind 0.0.0.0
 │   ├── css/site.css      # Shared custom styles
 │   └── js/
 │       ├── tailwind.config.js
-│       ├── data.js       # Single source of truth: 28 docs, roadmap, checklist, pillars,
+│       ├── data.js       # Single source of truth: 28 docs metadata, roadmap, checklist, pillars,
 │       │                 #   10-yr table, $GR allocation, stress tests, seed, P&L, …
-│       ├── data-utilities.js  # 120 utilities (generated from HST catalog)
+│       ├── data-docs.js  # Tailwind-styled HTML fragments for every spec document (auto-extracted from the original HST/ sources)
+│       ├── data-utilities.js  # 120 utilities (generated from the 120+ Utilities catalog)
 │       ├── partials.js   # Shared nav (dropdown + mobile menu) / footer / toast
 │       ├── ui.js         # Helpers, shared doc-card template, toast, KPI, mock sync
 │       ├── charts.js     # SVG price chart
-│       └── pages/        # home.js · documents.js · roadmap.js · categories.js (all 8
-│                         #   category pages + their widgets)
-├── docs/                 # Site documentation (one file per page + 28 spec companions)
-│   ├── README.md         # Structure, architecture, how to extend
-│   ├── home.md · documents.md · roadmap.md
-│   ├── whitepaper.md · tokenomics.md · land.md · strategy.md
-│   ├── finance.md · blockchain.md · compliance.md · ecosystem.md
-│   └── hst/              # Markdown companion for every HST spec document
-└── HST/                  # 28 original spec documents (HTML) + Task.txt brief
+│       └── pages/        # home.js · documents.js · doc.js · roadmap.js · categories.js
+│                         #   (categories.js powers all 8 category pages + their widgets)
+└── docs/                 # Site documentation (one file per page + 28 spec companions)
+    ├── README.md         # Structure, architecture, how to extend
+    ├── home.md · documents.md · roadmap.md
+    ├── whitepaper.md · tokenomics.md · land.md · strategy.md
+    ├── finance.md · blockchain.md · compliance.md · ecosystem.md
+    └── hst/              # Markdown companion for every spec document
 ```
 
 ### Key documents
 
-[Master Project Index](HST/BhoomiMesh_BMCM_Complete_Project_Master_Index.html) ·
-[Grand Master Whitepaper](HST/BhoomiMesh_BMCM_Grand_Master_Whitepaper.html) ·
-[24-Month Roadmap & $GR Coin Plan](HST/BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html) ·
-[120+ Utilities Catalog](HST/BhoomiMesh_100_Plus_Utilities_Master_List.html) ·
-[Smart Contract Dev Guide](HST/BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html) ·
+[Master Project Index](doc.html?d=BhoomiMesh_BMCM_Complete_Project_Master_Index.html) ·
+[Grand Master Whitepaper](doc.html?d=BhoomiMesh_BMCM_Grand_Master_Whitepaper.html) ·
+[24-Month Roadmap & $GR Coin Plan](doc.html?d=BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html) ·
+[120+ Utilities Catalog](doc.html?d=BhoomiMesh_100_Plus_Utilities_Master_List.html) ·
+[Smart Contract Dev Guide](doc.html?d=BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html) ·
 [Site documentation](docs/README.md)
 
 > ⚠️ **Disclaimer:** This is a project-specification demo. Figures (prices, ROI, projections) come from the

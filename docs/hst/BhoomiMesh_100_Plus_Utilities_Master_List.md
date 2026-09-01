@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Master Catalog of 120+ Protocol Utilities
 
-> **Source:** [BhoomiMesh_100_Plus_Utilities_Master_List.html](HST/BhoomiMesh_100_Plus_Utilities_Master_List.html) · **Category:** Ecosystem & Utilities · **Maturity:** Catalog · **Level:** Core
+> **Source:** [BhoomiMesh_100_Plus_Utilities_Master_List.html](../../doc.html?d=BhoomiMesh_100_Plus_Utilities_Master_List.html) · **Category:** Ecosystem & Utilities · **Maturity:** Catalog · **Level:** Core
 
 
 120 concrete utilities across 12 sectors — physical land, AI agents, DePIN, drone airspace, solar & carbon, agriculture, DeFi, AR, governance, civic, logistics and sub-tokens.

@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Residential Flats, Houses & Co-Living Tokenization Engine ($SMART-HOMES)
 
-> **Source:** [Residential_Flats_And_Housing_Tokenization_Engine.html](HST/Residential_Flats_And_Housing_Tokenization_Engine.html) · **Category:** Land & Property Engines · **Maturity:** Production Spec · **Level:** Advanced
+> **Source:** [Residential_Flats_And_Housing_Tokenization_Engine.html](../../doc.html?d=Residential_Flats_And_Housing_Tokenization_Engine.html) · **Category:** Land & Property Engines · **Maturity:** Production Spec · **Level:** Advanced
 
 
 $SMART-HOMES engine: the 70/30 residential homeowner lease model, a 3% → 15% APY yield-boost engine and the prime Indian metros shortlist.

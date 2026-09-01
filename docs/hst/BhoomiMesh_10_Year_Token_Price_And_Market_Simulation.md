@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - 10-Year Token Price Calculation & Market Simulation Model
 
-> **Source:** [BhoomiMesh_10_Year_Token_Price_And_Market_Simulation.html](HST/BhoomiMesh_10_Year_Token_Price_And_Market_Simulation.html) · **Category:** Tokenomics & Earnings · **Maturity:** Financial Model · **Level:** Advanced
+> **Source:** [BhoomiMesh_10_Year_Token_Price_And_Market_Simulation.html](../../doc.html?d=BhoomiMesh_10_Year_Token_Price_And_Market_Simulation.html) · **Category:** Tokenomics & Earnings · **Maturity:** Financial Model · **Level:** Advanced
 
 
 Macro pro-forma: 10 acres scaling to 50,000 acres, a ₹2,250 Cr portfolio, the buyback & burn engine and over-buy / over-sell market stress tests.

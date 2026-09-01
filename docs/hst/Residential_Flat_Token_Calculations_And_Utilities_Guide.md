@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Residential Flat Token Calculations & Utilities Guide
 
-> **Source:** [Residential_Flat_Token_Calculations_And_Utilities_Guide.html](HST/Residential_Flat_Token_Calculations_And_Utilities_Guide.html) · **Category:** Land & Property Engines · **Maturity:** Financial Model · **Level:** Standard
+> **Source:** [Residential_Flat_Token_Calculations_And_Utilities_Guide.html](../../doc.html?d=Residential_Flat_Token_Calculations_And_Utilities_Guide.html) · **Category:** Land & Property Engines · **Maturity:** Financial Model · **Level:** Standard
 
 
 Valuation-weighted flat tokenization formulas, three real-world case studies (₹1.50 Cr flat) and deep-dive specs for residential utilities #121–128.

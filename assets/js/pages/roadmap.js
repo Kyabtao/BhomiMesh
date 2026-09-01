@@ -37,7 +37,7 @@
         <td class="px-5 py-3.5 font-mono text-xs text-slate-400">${esc(t.w)}</td>
         <td class="px-5 py-3.5 text-slate-400">${esc(t.owner)}</td>
         <td class="px-5 py-3.5">${isRoad
-          ? `<a href="${href(t.doc)}" target="_blank" rel="noopener" class="text-xs font-semibold text-emerald-300/90 hover:text-emerald-200" title="${esc(t.doc)}"><i class="fa-solid fa-file-lines mr-1.5"></i>Spec</a>`
+          ? `<a href="${href(t.doc)}" class="text-xs font-semibold text-emerald-300/90 hover:text-emerald-200" title="${esc(t.doc)}"><i class="fa-solid fa-file-lines mr-1.5"></i>Spec</a>`
           : `<span class="text-xs text-slate-600">Checklist</span>`}</td>
         <td class="px-5 py-3.5"><span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold ${s.badge}"><i class="fa-solid ${s.icon}"></i>${s.label}</span></td>
       </tr>`;

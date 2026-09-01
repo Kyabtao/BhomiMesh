@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - 3-Year Freehold First & Revenue Reinvestment Strategy
 
-> **Source:** [Freehold_First_3_Year_Strategy_Plan.html](HST/Freehold_First_3_Year_Strategy_Plan.html) · **Category:** Strategy & Roadmap · **Maturity:** Execution Plan · **Level:** Core
+> **Source:** [Freehold_First_3_Year_Strategy_Plan.html](../../doc.html?d=Freehold_First_3_Year_Strategy_Plan.html) · **Category:** Strategy & Roadmap · **Maturity:** Execution Plan · **Level:** Core
 
 
 Years 1–3 on 100% freehold company land reinvesting lease rents; the landowner lease portal opens in Y4, with a freehold-vs-day-1-lease comparison.

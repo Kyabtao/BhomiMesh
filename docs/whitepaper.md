@@ -28,5 +28,5 @@ The sinking-reserve note (8% of lease rent) is static copy from the grand master
 
 ## Source documents
 
-- `HST/BhoomiMesh_BMCM_Grand_Master_Whitepaper.html` (+ v3)
-- `HST/BhoomiMesh_BMCM_Complete_Institutional_Whitepaper.html` (+ v2, v3)
+- [`BhoomiMesh_BMCM_Grand_Master_Whitepaper.html`](../doc.html?d=BhoomiMesh_BMCM_Grand_Master_Whitepaper.html) (+ v3)
+- [`BhoomiMesh_BMCM_Complete_Institutional_Whitepaper.html`](../doc.html?d=BhoomiMesh_BMCM_Complete_Institutional_Whitepaper.html) (+ v2, v3)

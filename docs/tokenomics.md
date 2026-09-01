@@ -27,8 +27,8 @@ Default state: Year 10 (₹4.448 + ₹3.180 = ₹7.628, 30.8x).
 
 ## Source documents
 
-- `HST/Single_Token_Price_Calculation_Chart.html` (full 11-row table)
-- `HST/BhoomiMesh_10_Year_Token_Price_And_Market_Simulation.html`
-- `HST/BhoomiMesh_All_Stakeholders_Earnings_And_Incentive_Blueprint.html`
-- `HST/Dividend_Distribution_And_Portfolio_Scenarios_Guide.html`
-- `HST/Unallocated_Token_Treasury_And_Land_Appreciation_Unlocking_Engine.html`
+- [`Single_Token_Price_Calculation_Chart.html`](../doc.html?d=Single_Token_Price_Calculation_Chart.html) (full 11-row table)
+- [`BhoomiMesh_10_Year_Token_Price_And_Market_Simulation.html`](../doc.html?d=BhoomiMesh_10_Year_Token_Price_And_Market_Simulation.html)
+- [`BhoomiMesh_All_Stakeholders_Earnings_And_Incentive_Blueprint.html`](../doc.html?d=BhoomiMesh_All_Stakeholders_Earnings_And_Incentive_Blueprint.html)
+- [`Dividend_Distribution_And_Portfolio_Scenarios_Guide.html`](../doc.html?d=Dividend_Distribution_And_Portfolio_Scenarios_Guide.html)
+- [`Unallocated_Token_Treasury_And_Land_Appreciation_Unlocking_Engine.html`](../doc.html?d=Unallocated_Token_Treasury_And_Land_Appreciation_Unlocking_Engine.html)

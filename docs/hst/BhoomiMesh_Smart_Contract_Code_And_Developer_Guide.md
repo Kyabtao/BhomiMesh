@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Smart Contract Code & Developer Guide
 
-> **Source:** [BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html](HST/BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html) · **Category:** Blockchain & Dev · **Maturity:** Production Spec · **Level:** Advanced
+> **Source:** [BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html](../../doc.html?d=BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html) · **Category:** Blockchain & Dev · **Maturity:** Production Spec · **Level:** Advanced
 
 
 Production Solidity — BhoomiMeshToken.sol, LandownerLeasePortal.sol and SinkingReplacementReserve.sol with a complete developer integration guide.

@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Unallocated Token Treasury & Land Appreciation Unlocking Engine
 
-> **Source:** [Unallocated_Token_Treasury_And_Land_Appreciation_Unlocking_Engine.html](HST/Unallocated_Token_Treasury_And_Land_Appreciation_Unlocking_Engine.html) · **Category:** Tokenomics & Earnings · **Maturity:** Production Spec · **Level:** Advanced
+> **Source:** [Unallocated_Token_Treasury_And_Land_Appreciation_Unlocking_Engine.html](../../doc.html?d=Unallocated_Token_Treasury_And_Land_Appreciation_Unlocking_Engine.html) · **Category:** Tokenomics & Earnings · **Maturity:** Production Spec · **Level:** Advanced
 
 
 Fixed minting with dynamic unallocated lockup — land appreciation progressively unlocks treasury tokens over time: the “development dividend”.

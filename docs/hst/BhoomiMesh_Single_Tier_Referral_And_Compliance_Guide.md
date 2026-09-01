@@ -1,6 +1,6 @@
 # BhoomiMesh ($BMCM) - Single-Tier Referral Architecture & MLM Compliance Analysis
 
-> **Source:** [BhoomiMesh_Single_Tier_Referral_And_Compliance_Guide.html](HST/BhoomiMesh_Single_Tier_Referral_And_Compliance_Guide.html) · **Category:** Compliance & Risk · **Maturity:** Audit Verified · **Level:** Standard
+> **Source:** [BhoomiMesh_Single_Tier_Referral_And_Compliance_Guide.html](../../doc.html?d=BhoomiMesh_Single_Tier_Referral_And_Compliance_Guide.html) · **Category:** Compliance & Risk · **Maturity:** Audit Verified · **Level:** Standard
 
 
 The single-tier (1-level) referral architecture benchmarked against multi-level marketing, plus three fully compliant community growth programs.

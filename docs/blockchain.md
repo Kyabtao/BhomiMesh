@@ -19,6 +19,6 @@ visualization plus smart-contract and L1-feature reference cards.
 
 ## Data provenance
 
-- `BMCM.GR_ALLOCATION` ← `HST/BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html` (allocation table, 1B $GR)
-- Contract list + L1 features ← `HST/BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html`,
-  `HST/GrinChain_L1_Blockchain_Architecture.html`, `HST/GrinRex_GR_Master_Whitepaper.html`
+- `BMCM.GR_ALLOCATION` ← [`BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html`](../doc.html?d=BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html) (allocation table, 1B $GR)
+- Contract list + L1 features ← [`BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html`](../doc.html?d=BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html),
+  [`GrinChain_L1_Blockchain_Architecture.html`](../doc.html?d=GrinChain_L1_Blockchain_Architecture.html), [`GrinRex_GR_Master_Whitepaper.html`](../doc.html?d=GrinRex_GR_Master_Whitepaper.html)

@@ -1,6 +1,6 @@
 # GrinRex L1 Blockchain - Multi-Industry Sub-Token Ecosystem Architecture
 
-> **Source:** [GrinRex_L1_Multi_Industry_Ecosystem_Architecture.html](HST/GrinRex_L1_Multi_Industry_Ecosystem_Architecture.html) · **Category:** Ecosystem & Utilities · **Maturity:** Production Spec · **Level:** Advanced
+> **Source:** [GrinRex_L1_Multi_Industry_Ecosystem_Architecture.html](../../doc.html?d=GrinRex_L1_Multi_Industry_Ecosystem_Architecture.html) · **Category:** Ecosystem & Utilities · **Maturity:** Production Spec · **Level:** Advanced
 
 
 Sub-token ecosystem architecture — $GAME-REX, $SOCIAL-REX, $BIZ-REX, $AGRI, $AIR, $ECO, $SMART, $META and how each compounds value into $GR and $BMCM.

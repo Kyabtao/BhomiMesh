@@ -114,12 +114,12 @@
       <div>
         <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400">Key Spec Documents</h4>
         <ul class="mt-3 space-y-2 text-sm text-slate-500">
-          <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_BMCM_Complete_Project_Master_Index.html"><i class="fa-solid fa-compass mr-2 text-emerald-500"></i>Master Project Index</a></li>
-          <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_BMCM_Grand_Master_Whitepaper.html"><i class="fa-solid fa-book-open mr-2 text-emerald-500"></i>Grand Master Whitepaper</a></li>
-          <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_BMCM_Investor_Deck.html"><i class="fa-solid fa-hand-holding-dollar mr-2 text-emerald-500"></i>Investor Deck</a></li>
-          <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html"><i class="fa-solid fa-route mr-2 text-emerald-500"></i>24-Month Roadmap</a></li>
-          <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_100_Plus_Utilities_Master_List.html"><i class="fa-solid fa-list-check mr-2 text-emerald-500"></i>120+ Utilities Catalog</a></li>
-          <li><a class="hover:text-emerald-300" target="_blank" rel="noopener" href="HST/BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html"><i class="fa-solid fa-code mr-2 text-emerald-500"></i>Smart Contract Dev Guide</a></li>
+          <li><a class="hover:text-emerald-300" href="doc.html?d=BhoomiMesh_BMCM_Complete_Project_Master_Index.html"><i class="fa-solid fa-compass mr-2 text-emerald-500"></i>Master Project Index</a></li>
+          <li><a class="hover:text-emerald-300" href="doc.html?d=BhoomiMesh_BMCM_Grand_Master_Whitepaper.html"><i class="fa-solid fa-book-open mr-2 text-emerald-500"></i>Grand Master Whitepaper</a></li>
+          <li><a class="hover:text-emerald-300" href="doc.html?d=BhoomiMesh_BMCM_Investor_Deck.html"><i class="fa-solid fa-hand-holding-dollar mr-2 text-emerald-500"></i>Investor Deck</a></li>
+          <li><a class="hover:text-emerald-300" href="doc.html?d=BhoomiMesh_BMCM_And_GrinRex_GR_Launch_Timeline_And_Coin_Planning.html"><i class="fa-solid fa-route mr-2 text-emerald-500"></i>24-Month Roadmap</a></li>
+          <li><a class="hover:text-emerald-300" href="doc.html?d=BhoomiMesh_100_Plus_Utilities_Master_List.html"><i class="fa-solid fa-list-check mr-2 text-emerald-500"></i>120+ Utilities Catalog</a></li>
+          <li><a class="hover:text-emerald-300" href="doc.html?d=BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html"><i class="fa-solid fa-code mr-2 text-emerald-500"></i>Smart Contract Dev Guide</a></li>
         </ul>
       </div>
     </div>
