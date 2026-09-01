@@ -1,0 +1,70 @@
+/* =========================================================
+   BhoomiMesh site — shared styles
+   Loaded on every page after Tailwind CDN + fonts.
+   ========================================================= */
+
+body {
+  background-color: #020617;
+}
+
+/* Subtle grid + glow backdrop for hero / banded sections */
+.bg-grid {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(16, 185, 129, 0.13), transparent),
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 44px 44px, 44px 44px;
+}
+
+/* Gradient headline text (emerald → gold → sky) */
+.grad-text {
+  background: linear-gradient(120deg, #34d399 0%, #fbbf24 55%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Dark scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* ---- Interactive control states (applied by JS) ---- */
+.chip.active {
+  border-color: rgba(52, 211, 153, 0.6);
+  background: rgba(16, 185, 129, 0.14);
+  color: #6ee7b7;
+}
+.tbl-chip.active {
+  border-color: rgba(56, 189, 248, 0.6);
+  background: rgba(14, 165, 233, 0.14);
+  color: #7dd3fc;
+}
+.tab-btn.active {
+  background: rgba(16, 185, 129, 0.12);
+  color: #6ee7b7;
+  border-color: rgba(52, 211, 153, 0.5);
+}
+
+/* ---- Toast ---- */
+#toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---- Sync feedback ---- */
+.card-fade { transition: opacity 0.3s ease; }
+.flashing .card-fade { opacity: 0.45; }
+
+/* ---- Entry animations (also referenced inline by JS renderers) ---- */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+.animate-fade-up { animation: fadeUp 0.45s ease both; }
+.animate-pulse-soft { animation: pulseSoft 2.4s ease-in-out infinite; }

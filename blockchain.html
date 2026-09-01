@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blockchain & Development — BhoomiMesh ($BMCM)</title>
+<meta name="description" content="GrinChain sovereign L1 architecture, the 1B $GR allocation & vesting, production Solidity contracts and developer tooling.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%8E%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/js/tailwind.config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-cat="blockchain" class="font-sans text-slate-200 antialiased selection:bg-emerald-500/30">
+
+<div id="siteNav"></div>
+
+<header class="bg-grid border-b border-slate-800/70">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <a href="index.html" class="text-xs font-semibold text-slate-500 transition hover:text-emerald-300"><i class="fa-solid fa-arrow-left mr-1.5"></i>Back to home</a>
+    <div id="catHead" class="mt-3"></div>
+    <div id="catFacts" class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4"></div>
+  </div>
+</header>
+
+<main class="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+  <section class="animate-fade-up"><div class="grid gap-5 lg:grid-cols-[1.4fr_1fr]">
+  <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
+    <h2 class="flex items-center gap-2 text-lg font-extrabold text-white"><i class="fa-solid fa-coins text-sky-400"></i>$GR Master Coin Allocation</h2>
+    <p class="mt-1 text-sm text-slate-500">1,000,000,000 $GR total supply — five pools with vesting schedules.</p>
+    <div class="mt-5 space-y-3.5" id="grAlloc"></div>
+  </div>
+  <div class="flex flex-col gap-4">
+    <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <h3 class="flex items-center gap-2 text-sm font-bold text-white"><i class="fa-solid fa-code text-emerald-400"></i>Production Smart Contracts</h3>
+      <ul class="mt-3 space-y-2.5 text-[13px] text-slate-400">
+        <li><code class="rounded bg-slate-950 px-1.5 py-0.5 text-xs text-emerald-300">BhoomiMeshToken.sol</code> — master $BMCM land token, mint/burn, deed redemption</li>
+        <li><code class="rounded bg-slate-950 px-1.5 py-0.5 text-xs text-emerald-300">LandownerLeasePortal.sol</code> — 30-year lease onboarding, 70/30 split, dividend vault</li>
+        <li><code class="rounded bg-slate-950 px-1.5 py-0.5 text-xs text-emerald-300">SinkingReplacementReserve.sol</code> — 8% rent accrual, plot replacement, sunset burn</li>
+      </ul>
+      <a href="HST/BhoomiMesh_Smart_Contract_Code_And_Developer_Guide.html" target="_blank" rel="noopener" class="mt-4 inline-block text-xs font-bold text-emerald-300 hover:text-emerald-200">Open full dev guide <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></a>
+    </div>
+    <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+      <h3 class="flex items-center gap-2 text-sm font-bold text-white"><i class="fa-solid fa-microchip text-sky-400"></i>GrinChain L1 Features</h3>
+      <div class="mt-3 grid grid-cols-2 gap-2 text-xs font-semibold text-slate-300">
+        <span class="rounded-lg bg-slate-950/70 px-3 py-2"><i class="fa-solid fa-check mr-2 text-emerald-400"></i>EVM compatible</span>
+        <span class="rounded-lg bg-slate-950/70 px-3 py-2"><i class="fa-solid fa-check mr-2 text-emerald-400"></i>Consensus KYC</span>
+        <span class="rounded-lg bg-slate-950/70 px-3 py-2"><i class="fa-solid fa-check mr-2 text-emerald-400"></i>Teleport bridges</span>
+        <span class="rounded-lg bg-slate-950/70 px-3 py-2"><i class="fa-solid fa-check mr-2 text-emerald-400"></i>$GR gas economy</span>
+        <span class="rounded-lg bg-slate-950/70 px-3 py-2"><i class="fa-solid fa-check mr-2 text-emerald-400"></i>Daily state snapshots</span>
+        <span class="rounded-lg bg-slate-950/70 px-3 py-2"><i class="fa-solid fa-check mr-2 text-emerald-400"></i>ERC-3643 RWA layer</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+  <section class="mt-14">
+    <div class="flex items-center justify-between">
+      <h2 class="text-xl font-extrabold text-white">Documents in this category</h2>
+      <span id="catCount" class="text-xs text-slate-500"></span>
+    </div>
+    <div id="catCards" class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"></div>
+  </section>
+  <nav id="catPager" class="mt-12 flex items-center justify-between gap-4"></nav>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/data-utilities.js"></script>
+<script src="assets/js/partials.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/pages/categories.js"></script>
+</body>
+</html>
